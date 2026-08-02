@@ -5,7 +5,8 @@ const { makeManifest, makeCatalog, makeMeta, makeStreams } = require("../src/add
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.match(manifest.logo, /app-logo\.png$/);
+  assert.equal(manifest.version, "1.0.1");
+  assert.match(manifest.logo, /app-logo-v2\.png$/);
   const catalog = makeCatalog();
   assert.equal(catalog.metas[0].id, "cartoon-aziz:sally");
   assert.match(catalog.metas[0].poster, /sally-poster\.png$/);

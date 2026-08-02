@@ -26,9 +26,9 @@ function artworkFields(cartoon) {
 function makeManifest() {
   return {
     id: "com.aziz.cartoon",
-    version: "1.0.0",
+    version: "1.0.1",
     name: "Cartoon Aziz",
-    logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo.png",
+    logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
     description: "مكتبة كرتون عربية تعمل عبر روابط Cloudflare R2 العامة",
     resources: ["catalog", "meta", "stream"],
     types: ["series"],
@@ -92,6 +92,7 @@ function createApp() {
 
     const assets = {
       "/assets/app-logo.png": "app-logo.png",
+      "/assets/app-logo-v2.png": "app-logo-v2.png",
       "/assets/sally-poster.png": "sally-poster.png"
     };
     if (assets[pathname]) {
