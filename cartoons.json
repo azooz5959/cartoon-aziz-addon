@@ -4,7 +4,6 @@
     {
       "id": "sally-visual",
       "name": "سالي",
-      "displayName": "​",
       "description": "تدور القصة حول سالي كرو، الفتاة الصغيرة التي تصل إلى لندن للدراسة في مدرسة داخلية راقية. تنقلب حياتها بعد وفاة والدها وفقدان ثروته، فتُجبر على العمل خادمة داخل المدرسة نفسها. ورغم القسوة والظلم، تتمسك سالي بالأمل والطيبة، وتواجه أيامها بشجاعة بمساعدة أصدقائها، في حكاية إنسانية مؤثرة عن الصبر والكرامة والصداقة.",
       "logo": "https://cartoon-aziz-addon.onrender.com/assets/sally-logo.png",
       "year": 1985,
@@ -20,7 +19,7 @@
       "extension": ".mp4",
       "poster": "https://cartoon-aziz-addon.onrender.com/assets/sally-poster.png",
       "episodeThumbnail": "https://cartoon-aziz-addon.onrender.com/assets/sally-poster.png",
-      "background": "https://cartoon-aziz-addon.onrender.com/assets/sally-background-logo.png",
+      "background": "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
       "releaseInfo": "1985"
     }
   ]
