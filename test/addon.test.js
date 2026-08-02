@@ -5,7 +5,7 @@ const { makeManifest, makeCatalog, makeMeta, makeStreams } = require("../src/add
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.2.0");
+  assert.equal(manifest.version, "3.2.1");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
   assert.equal(manifest.catalogs.length, 4);
   const catalog = makeCatalog();
@@ -33,6 +33,7 @@ test("Moka Moka has 50 episodes and correct R2 folder", () => {
   const meta = makeMeta("cartoon-aziz:moka-moka");
   assert.equal(meta.meta.videos.length, 50);
   assert.equal(meta.meta.releaseInfo, "1993");
+  assert.match(meta.meta.poster, /%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7\.PNG$/);
   const result = makeStreams("cartoon-aziz:moka-moka:50");
   assert.equal(result.streams[0].url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7/E50.mp4");
 });
