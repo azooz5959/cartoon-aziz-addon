@@ -5,9 +5,9 @@ const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeO
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.3.0");
+  assert.equal(manifest.version, "3.4.0");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
-  assert.equal(manifest.catalogs.length, 4);
+  assert.equal(manifest.catalogs.length, 6);
   const catalog = makeCatalog();
   assert.equal(catalog.metas.length, 2);
   assert.equal(catalog.metas[0].id, "cartoon-aziz:sally-visual");
@@ -15,18 +15,20 @@ test("manifest and catalog are valid", async () => {
   assert.equal(makeCatalog("cartoon-aziz", "سالي").metas.length, 1);
   assert.equal(makeCatalog("cartoon-aziz", "غير موجود").metas.length, 0);
   assert.equal(makeCatalog("cartoon-aziz-classics").metas.length, 2);
+  assert.match(makeCatalog("cartoon-aziz-latest").metas[0].name, /موكا موكا/);
+  assert.match(makeCatalog("cartoon-aziz-latest").metas[0].name, /🆕/);
 });
 
 test("configuration changes catalogs and display behavior", () => {
   const options = { kids: false, adventures: false, showQuality: false, usePoster: false, autoplay: false, newestFirst: true };
   const token = encodeOptions(options);
   assert.equal(decodeOptions(token).kids, false);
-  assert.deepEqual(makeManifest(options).catalogs.map((item) => item.id), ["cartoon-aziz", "cartoon-aziz-classics"]);
+  assert.deepEqual(makeManifest(options).catalogs.map((item) => item.id), ["cartoon-aziz", "cartoon-aziz-classics", "cartoon-aziz-latest", "cartoon-aziz-recommended"]);
   const meta = makeMeta("cartoon-aziz:moka-moka", null, options);
   assert.equal(meta.meta.videos[0].episode, 50);
   assert.equal(meta.meta.videos[0].thumbnail, undefined);
   const stream = makeStreams("cartoon-aziz:moka-moka:1", options).streams[0];
-  assert.equal(stream.name, "Cartoon Aziz");
+  assert.equal(stream.name, "R2 الرئيسي");
   assert.equal(stream.behaviorHints, undefined);
 });
 
