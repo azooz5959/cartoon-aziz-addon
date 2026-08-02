@@ -1,0 +1,17 @@
+{
+  "baseUrl": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev",
+  "cartoons": [
+    {
+      "id": "sally",
+      "name": "سالي",
+      "description": "مسلسل سالي الكرتوني الكلاسيكي.",
+      "folder": "سالي",
+      "episodes": 46,
+      "episodePrefix": "E",
+      "extension": ".mp4",
+      "poster": "",
+      "background": "",
+      "releaseInfo": "1985"
+    }
+  ]
+}
