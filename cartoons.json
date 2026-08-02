@@ -5,13 +5,20 @@
       "id": "sally",
       "name": "سالي",
       "description": "مسلسل سالي الكرتوني الكلاسيكي.",
+      "year": 1985,
+      "runtime": "24 دقيقة",
+      "quality": "1080p",
+      "language": "العربية",
+      "genres": ["دراما", "عائلي", "كلاسيكي"],
+      "categories": ["classics", "kids", "adventures"],
+      "season": 1,
       "folder": "سالي",
       "episodes": 48,
       "episodePrefix": "E",
       "extension": ".mp4",
       "poster": "https://cartoon-aziz-addon.onrender.com/assets/sally-poster.png",
       "episodeThumbnail": "https://cartoon-aziz-addon.onrender.com/assets/sally-poster.png",
-      "background": "",
+      "background": "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
       "releaseInfo": "1985"
     }
   ]
