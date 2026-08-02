@@ -1,11 +1,11 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { makeManifest, makeCatalog, makeMeta, makeStreams } = require("../src/addon");
+const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeOptions } = require("../src/addon");
 
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.2.1");
+  assert.equal(manifest.version, "3.3.0");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
   assert.equal(manifest.catalogs.length, 4);
   const catalog = makeCatalog();
@@ -15,6 +15,19 @@ test("manifest and catalog are valid", async () => {
   assert.equal(makeCatalog("cartoon-aziz", "سالي").metas.length, 1);
   assert.equal(makeCatalog("cartoon-aziz", "غير موجود").metas.length, 0);
   assert.equal(makeCatalog("cartoon-aziz-classics").metas.length, 2);
+});
+
+test("configuration changes catalogs and display behavior", () => {
+  const options = { kids: false, adventures: false, showQuality: false, usePoster: false, autoplay: false, newestFirst: true };
+  const token = encodeOptions(options);
+  assert.equal(decodeOptions(token).kids, false);
+  assert.deepEqual(makeManifest(options).catalogs.map((item) => item.id), ["cartoon-aziz", "cartoon-aziz-classics"]);
+  const meta = makeMeta("cartoon-aziz:moka-moka", null, options);
+  assert.equal(meta.meta.videos[0].episode, 50);
+  assert.equal(meta.meta.videos[0].thumbnail, undefined);
+  const stream = makeStreams("cartoon-aziz:moka-moka:1", options).streams[0];
+  assert.equal(stream.name, "Cartoon Aziz");
+  assert.equal(stream.behaviorHints, undefined);
 });
 
 test("Sally has 48 episodes and an encoded R2 stream URL", async () => {

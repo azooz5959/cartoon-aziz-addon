@@ -24,22 +24,33 @@ function artworkFields(cartoon) {
   };
 }
 
-function makeManifest() {
+const DEFAULT_OPTIONS = { all: true, classics: true, adventures: true, kids: true, showQuality: true, usePoster: true, hideMissing: true, autoplay: true, newestFirst: false, quality: "auto" };
+
+function normalizeOptions(value = {}) { return { ...DEFAULT_OPTIONS, ...value }; }
+function encodeOptions(value) { return Buffer.from(JSON.stringify(normalizeOptions(value))).toString("base64url"); }
+function decodeOptions(value) {
+  try { return normalizeOptions(JSON.parse(Buffer.from(value, "base64url").toString("utf8"))); }
+  catch { return normalizeOptions(); }
+}
+
+function makeManifest(userOptions = {}) {
+  const options = normalizeOptions(userOptions);
+  const catalogs = [
+    options.all && { type: "series", id: "cartoon-aziz", name: "كل المسلسلات", extra: [{ name: "search", isRequired: false }] },
+    options.classics && { type: "series", id: "cartoon-aziz-classics", name: "كلاسيكيات" },
+    options.adventures && { type: "series", id: "cartoon-aziz-adventures", name: "مغامرات" },
+    options.kids && { type: "series", id: "cartoon-aziz-kids", name: "أطفال" }
+  ].filter(Boolean);
   return {
     id: "com.aziz.cartoon.v3.visual",
-    version: "3.2.1",
+    version: "3.3.0",
     name: "Cartoon Aziz",
     logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
     background: "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
     description: "عالم الكرتون العربي الكلاسيكي بجودة عالية — مكتبة عزيز الخاصة",
     resources: ["catalog", "meta", "stream"],
     types: ["series"],
-    catalogs: [
-      { type: "series", id: "cartoon-aziz", name: "كل المسلسلات", extra: [{ name: "search", isRequired: false }] },
-      { type: "series", id: "cartoon-aziz-classics", name: "كلاسيكيات" },
-      { type: "series", id: "cartoon-aziz-adventures", name: "مغامرات" },
-      { type: "series", id: "cartoon-aziz-kids", name: "أطفال" }
-    ],
+    catalogs,
     idPrefixes: ["cartoon-aziz:"],
     behaviorHints: { configurable: true, configurationRequired: false }
   };
@@ -71,12 +82,15 @@ function episodeThumbnail(cartoon, episode) {
   return cartoon.episodeThumbnail || cartoon.poster || "";
 }
 
-function makeMeta(id, availableEpisodes) {
+function makeMeta(id, availableEpisodes, userOptions = {}) {
+  const options = normalizeOptions(userOptions);
   const { cartoons } = loadData();
   const cartoon = cartoons.find((item) => addonId(item.id) === id);
   if (!cartoon) return { meta: null };
   const allowed = availableEpisodes ? new Set(availableEpisodes) : null;
-  const videos = Array.from({ length: cartoon.episodes }, (_, index) => index + 1)
+  let episodeNumbers = Array.from({ length: cartoon.episodes }, (_, index) => index + 1);
+  if (options.newestFirst) episodeNumbers.reverse();
+  const videos = episodeNumbers
     .filter((episode) => !allowed || allowed.has(episode))
     .map((episode) => ({
       id: videoId(cartoon.id, episode), title: `${cartoon.episodeTitlePrefix || "الحلقة"} ${episode}`,
@@ -84,7 +98,7 @@ function makeMeta(id, availableEpisodes) {
       released: new Date(Date.UTC(cartoon.year || 2000, 0, Math.min(episode, 28))).toISOString(),
       ...(cartoon.logo ? { logo: cartoon.logo } : {}),
       ...(cartoon.background ? { background: cartoon.background } : {}),
-      ...(episodeThumbnail(cartoon, episode) ? { thumbnail: episodeThumbnail(cartoon, episode) } : {})
+      ...(options.usePoster && episodeThumbnail(cartoon, episode) ? { thumbnail: episodeThumbnail(cartoon, episode) } : {})
     }));
   return { meta: {
     id: addonId(cartoon.id), type: "series", name: cartoon.displayName || cartoon.name,
@@ -101,7 +115,8 @@ function streamUrl(baseUrl, cartoon, episode) {
   return `${baseUrl.replace(/\/$/, "")}/${encodeURIComponent(cartoon.folder)}/${encodeURIComponent(`${prefix}${episode}${extension}`)}`;
 }
 
-function makeStreams(id) {
+function makeStreams(id, userOptions = {}) {
+  const options = normalizeOptions(userOptions);
   const match = /^cartoon-aziz:([^:]+):(\d+)$/.exec(id);
   if (!match) return { streams: [] };
   const { baseUrl, cartoons } = loadData();
@@ -109,9 +124,10 @@ function makeStreams(id) {
   const episode = Number(match[2]);
   if (!cartoon || episode < 1 || episode > cartoon.episodes) return { streams: [] };
   return { streams: [{
-    name: `Cartoon Aziz • ${cartoon.quality || "HD"}`,
-    title: `${cartoon.name} — الحلقة ${episode}\n${cartoon.quality || "HD"} • ${cartoon.runtime || ""}`.trim(),
-    url: streamUrl(baseUrl, cartoon, episode), behaviorHints: { bingeGroup: `cartoon-aziz-${cartoon.id}` }
+    name: options.showQuality ? `Cartoon Aziz • ${cartoon.quality || "HD"}` : "Cartoon Aziz",
+    title: `${cartoon.name} — الحلقة ${episode}${options.showQuality ? `\n${cartoon.quality || "HD"} • ${cartoon.runtime || ""}` : ""}`.trim(),
+    url: streamUrl(baseUrl, cartoon, episode),
+    ...(options.autoplay ? { behaviorHints: { bingeGroup: `cartoon-aziz-${cartoon.id}` } } : {})
   }] };
 }
 
@@ -145,8 +161,27 @@ function welcomePage() {
 }
 
 function configurePage() {
-  const manifest = "https://cartoon-aziz-addon.onrender.com/manifest.json";
-  return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>إعداد Cartoon Aziz</title><style>body{background:#090d12;color:#fff;font-family:system-ui;max-width:700px;margin:auto;padding:40px 20px}section{background:#121a24;border:1px solid #ffffff15;border-radius:18px;padding:24px}img{width:90px;border-radius:18px}input{width:100%;padding:14px;border-radius:10px;border:1px solid #ffffff20;background:#080c11;color:#fff;margin:12px 0}button,a{display:inline-block;border:0;border-radius:10px;padding:12px 18px;background:#efb74c;color:#111;font-weight:800;text-decoration:none;cursor:pointer}.ok{color:#72df91}</style></head><body><section><img src="/assets/app-logo-v2.png"><h1>إعداد Cartoon Aziz</h1><p class="ok">● الإضافة متصلة وتعمل</p><p>فعّل الأقسام التي تريدها من صفحة الإضافات داخل Harbor. يدعم الكتالوج البحث العربي وأقسام الكلاسيكيات والمغامرات والأطفال.</p><label>رابط Manifest</label><input id="url" readonly value="${manifest}"><button onclick="navigator.clipboard.writeText(document.getElementById('url').value);this.textContent='تم النسخ ✓'">نسخ الرابط</button> <a href="/">الصفحة الرئيسية</a></section></body></html>`;
+  const { cartoons } = loadData();
+  const total = cartoons.reduce((sum, item) => sum + item.episodes, 0);
+  return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>إعداد Cartoon Aziz</title><style>
+  *{box-sizing:border-box}body{margin:0;background:#080d13;color:#f7f8fa;font-family:system-ui,-apple-system,sans-serif}.wrap{max-width:920px;margin:auto;padding:35px 20px}.head{display:flex;align-items:center;gap:18px;margin-bottom:24px}.head img{width:82px;border-radius:20px}.head p{color:#94a0ad;margin:4px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:#111923;border:1px solid #ffffff12;border-radius:18px;padding:22px}.card h2{font-size:18px;margin:0 0 15px}.option{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #ffffff0d}.option:last-child{border:0}.switch{position:relative;width:48px;height:27px}.switch input{opacity:0}.slider{position:absolute;inset:0;background:#35404c;border-radius:30px;cursor:pointer}.slider:before{content:"";position:absolute;width:21px;height:21px;right:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}.switch input:checked+.slider{background:#eeb54a}.switch input:checked+.slider:before{transform:translateX(-21px)}select,.url{width:100%;background:#080d13;color:#fff;border:1px solid #ffffff1c;border-radius:10px;padding:12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.stat{background:#111923;border:1px solid #ffffff12;border-radius:14px;padding:16px}.stat b{display:block;color:#eeb54a;font-size:22px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}button,a.btn{border:0;border-radius:11px;padding:13px 18px;background:#eeb54a;color:#111;font-weight:800;text-decoration:none;cursor:pointer}.secondary{background:#202a35!important;color:#fff!important}.status{color:#78df98}.muted{color:#94a0ad;font-size:13px}@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}</style></head><body><main class="wrap"><div class="head"><img src="/assets/app-logo-v2.png"><div><h1>إعداد Cartoon Aziz</h1><p>خصص مكتبتك ثم ثبّت الرابط الناتج في Harbor.</p></div></div>
+  <section class="stats"><div class="stat"><b id="r2">…</b><span>حالة R2</span></div><div class="stat"><b>${cartoons.length}</b><span>المسلسلات</span></div><div class="stat"><b>${total}</b><span>الحلقات</span></div><div class="stat"><b>3.3.0</b><span>الإصدار</span></div></section>
+  <div class="grid"><section class="card"><h2>أقسام المكتبة</h2>${[["all","كل المسلسلات"],["classics","كلاسيكيات"],["adventures","مغامرات"],["kids","أطفال"]].map(([id,label])=>`<div class="option"><span>${label}</span><label class="switch"><input id="${id}" type="checkbox" checked><span class="slider"></span></label></div>`).join("")}</section>
+  <section class="card"><h2>العرض والتشغيل</h2>${[["showQuality","إظهار الجودة بجانب السيرفر"],["usePoster","استخدام البوستر للحلقات"],["hideMissing","إخفاء الروابط غير الموجودة"],["autoplay","تشغيل الحلقة التالية تلقائيًا"],["newestFirst","عرض الأحدث أولًا"]].map(([id,label])=>`<div class="option"><span>${label}</span><label class="switch"><input id="${id}" type="checkbox" ${id==='newestFirst'?'':'checked'}><span class="slider"></span></label></div>`).join("")}<div class="option"><span>الجودة الافتراضية</span><select id="quality" style="width:125px"><option value="auto">تلقائية</option><option value="1080p">1080p</option><option value="HD">HD</option></select></div></section></div>
+  <section class="card" style="margin-top:16px"><h2>رابط التثبيت</h2><input class="url" id="url" readonly><p class="muted">آخر تحديث: ${fs.statSync(dataPath).mtime.toLocaleString("ar-SA")}</p><div class="actions"><button id="install">تثبيت في Harbor</button><button class="secondary" id="copy">نسخ رابط Manifest</button><button class="secondary" id="save">حفظ الإعدادات</button><button class="secondary" id="reset">إعادة الافتراضي</button><a class="btn secondary" href="/">الصفحة الرئيسية</a></div></section></main><script>
+  const ids=['all','classics','adventures','kids','showQuality','usePoster','hideMissing','autoplay','newestFirst'];
+  const defaults=${JSON.stringify(DEFAULT_OPTIONS)};
+  const read=()=>Object.assign({},Object.fromEntries(ids.map(id=>[id,document.getElementById(id).checked])),{quality:document.getElementById('quality').value});
+  const token=o=>btoa(JSON.stringify(o)).replaceAll('+','-').replaceAll('/','_').replaceAll('=','');
+  const update=()=>{document.getElementById('url').value=location.origin+'/c/'+token(read())+'/manifest.json'};
+  ids.forEach(id=>document.getElementById(id).addEventListener('change',update));document.getElementById('quality').addEventListener('change',update);
+  document.getElementById('copy').onclick=async()=>{await navigator.clipboard.writeText(document.getElementById('url').value);document.getElementById('copy').textContent='تم النسخ ✓'};
+  document.getElementById('save').onclick=()=>{localStorage.setItem('cartoonAzizOptions',JSON.stringify(read()));document.getElementById('save').textContent='تم الحفظ ✓'};
+  document.getElementById('reset').onclick=()=>{localStorage.removeItem('cartoonAzizOptions');ids.forEach(id=>document.getElementById(id).checked=defaults[id]);document.getElementById('quality').value=defaults.quality;update()};
+  document.getElementById('install').onclick=()=>{location.href=document.getElementById('url').value.replace('https://','stremio://')};
+  try{const saved=JSON.parse(localStorage.getItem('cartoonAzizOptions'));if(saved){ids.forEach(id=>document.getElementById(id).checked=saved[id]??defaults[id]);document.getElementById('quality').value=saved.quality||'auto'}}catch{}update();
+  fetch('/health.json').then(r=>r.json()).then(x=>{const el=document.getElementById('r2');el.textContent=x.r2?'متصل':'غير متصل';el.className=x.r2?'status':''}).catch(()=>document.getElementById('r2').textContent='غير متصل');
+  </script></body></html>`;
 }
 
 function createApp() {
@@ -154,35 +189,40 @@ function createApp() {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "*");
     const pathname = decodeURIComponent(new URL(req.url, "http://localhost").pathname);
+    const configured = /^\/c\/([^/]+)(\/.*)$/.exec(pathname);
+    const options = configured ? decodeOptions(configured[1]) : normalizeOptions();
+    const routePath = configured ? configured[2] : pathname;
     const json = (body, status = 200) => { res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" }); res.end(JSON.stringify(body)); };
     const html = (body) => { res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" }); res.end(body); };
 
-    if (pathname === "/") return html(welcomePage());
-    if (pathname === "/configure") return html(configurePage());
-    if (pathname === "/manifest.json") return json(makeManifest());
-    if (pathname === "/health.json") {
-      const { cartoons } = loadData();
-      return json({ status: "ok", series: cartoons.length, episodes: cartoons.reduce((sum, c) => sum + c.episodes, 0) });
+    if (routePath === "/") return html(welcomePage());
+    if (routePath === "/configure") return html(configurePage());
+    if (routePath === "/manifest.json") return json(makeManifest(options));
+    if (routePath === "/health.json") {
+      const { baseUrl, cartoons } = loadData();
+      let r2 = false;
+      try { const response = await fetch(streamUrl(baseUrl, cartoons[0], 1), { method: "HEAD", signal: AbortSignal.timeout(5000) }); r2 = response.status !== 404; } catch {}
+      return json({ status: "ok", r2, series: cartoons.length, episodes: cartoons.reduce((sum, c) => sum + c.episodes, 0) });
     }
-    if (pathname.startsWith("/assets/")) {
-      const filename = path.basename(pathname);
+    if (routePath.startsWith("/assets/")) {
+      const filename = path.basename(routePath);
       const assetPath = path.join(publicPath, filename);
       if (fs.existsSync(assetPath)) { res.writeHead(200, { "Content-Type": "image/png", "Cache-Control": "public, max-age=86400" }); return fs.createReadStream(assetPath).pipe(res); }
     }
 
-    const catalogMatch = /^\/catalog\/series\/(cartoon-aziz(?:-(?:classics|adventures|kids))?)(?:\/search=(.*))?\.json$/.exec(pathname);
+    const catalogMatch = /^\/catalog\/series\/(cartoon-aziz(?:-(?:classics|adventures|kids))?)(?:\/search=(.*))?\.json$/.exec(routePath);
     if (catalogMatch) return json(makeCatalog(catalogMatch[1], catalogMatch[2] || ""));
 
-    const metaMatch = /^\/meta\/series\/(.+)\.json$/.exec(pathname);
+    const metaMatch = /^\/meta\/series\/(.+)\.json$/.exec(routePath);
     if (metaMatch) {
       const { cartoons } = loadData();
       const cartoon = cartoons.find((item) => addonId(item.id) === metaMatch[1]);
-      return json(makeMeta(metaMatch[1], cartoon ? await availableEpisodes(cartoon) : null));
+      return json(makeMeta(metaMatch[1], cartoon && options.hideMissing ? await availableEpisodes(cartoon) : null, options));
     }
-    const streamMatch = /^\/stream\/series\/(.+)\.json$/.exec(pathname);
-    if (streamMatch) return json(makeStreams(streamMatch[1]));
+    const streamMatch = /^\/stream\/series\/(.+)\.json$/.exec(routePath);
+    if (streamMatch) return json(makeStreams(streamMatch[1], options));
     return json({ error: "Not found" }, 404);
   });
 }
 
-module.exports = { createApp, makeManifest, makeCatalog, makeMeta, makeStreams, welcomePage, normalize };
+module.exports = { createApp, makeManifest, makeCatalog, makeMeta, makeStreams, welcomePage, normalize, encodeOptions, decodeOptions };
