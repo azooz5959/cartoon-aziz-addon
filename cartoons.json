@@ -21,6 +21,26 @@
       "episodeThumbnail": "https://cartoon-aziz-addon.onrender.com/assets/sally-poster.png",
       "background": "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
       "releaseInfo": "1985"
+    },
+    {
+      "id": "moka-moka",
+      "name": "موكا موكا",
+      "description": "تعثر الفتاة يويبا شيكاتاني على ديناصور صغير ظريف، وتطلق عليه اسم موكا موكا نسبةً إلى الكلمات الوحيدة التي ينطق بها. يصبح موكا صديقها المقرب، ويخوضان مع العائلة والأصدقاء سلسلة من المواقف الكوميدية والمغامرات الممتعة المليئة بالمرح والخيال.",
+      "year": 1993,
+      "runtime": "24 دقيقة",
+      "quality": "HD",
+      "language": "العربية",
+      "genres": ["كوميديا", "مغامرات", "عائلي"],
+      "categories": ["classics", "kids", "adventures"],
+      "season": 1,
+      "folder": "موكا موكا",
+      "episodes": 50,
+      "episodePrefix": "E",
+      "extension": ".mp4",
+      "poster": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/ChatGPT%20Image%20Jun%2029%2C%202026%20at%2010_06_42%20AM.png",
+      "episodeThumbnail": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/ChatGPT%20Image%20Jun%2029%2C%202026%20at%2010_06_42%20AM.png",
+      "background": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/ChatGPT%20Image%20Jun%2029%2C%202026%20at%2010_06_42%20AM.png",
+      "releaseInfo": "1993"
     }
   ]
 }
