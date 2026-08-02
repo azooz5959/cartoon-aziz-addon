@@ -26,8 +26,8 @@ function artworkFields(cartoon) {
 
 function makeManifest() {
   return {
-    id: "com.aziz.cartoon.v3",
-    version: "3.0.0",
+    id: "com.aziz.cartoon.v3.visual",
+    version: "3.1.0",
     name: "Cartoon Aziz",
     logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
     background: "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
@@ -87,7 +87,7 @@ function makeMeta(id, availableEpisodes) {
       ...(episodeThumbnail(cartoon, episode) ? { thumbnail: episodeThumbnail(cartoon, episode) } : {})
     }));
   return { meta: {
-    id: addonId(cartoon.id), type: "series", name: cartoon.name,
+    id: addonId(cartoon.id), type: "series", name: cartoon.displayName || cartoon.name,
     description: cartoon.description || "", releaseInfo: cartoon.year ? String(cartoon.year) : (cartoon.releaseInfo || ""),
     runtime: cartoon.runtime || "", genres: cartoon.genres || [], language: cartoon.language || "العربية",
     ...(cartoon.logo ? { logo: cartoon.logo } : {}),
