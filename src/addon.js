@@ -26,8 +26,8 @@ function artworkFields(cartoon) {
 
 function makeManifest() {
   return {
-    id: "com.aziz.cartoon",
-    version: "2.0.1",
+    id: "com.aziz.cartoon.v3",
+    version: "3.0.0",
     name: "Cartoon Aziz",
     logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
     background: "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
