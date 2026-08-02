@@ -28,6 +28,7 @@ function makeManifest() {
     id: "com.aziz.cartoon",
     version: "1.0.0",
     name: "Cartoon Aziz",
+    logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo.png",
     description: "مكتبة كرتون عربية تعمل عبر روابط Cloudflare R2 العامة",
     resources: ["catalog", "meta", "stream"],
     types: ["series"],
@@ -52,7 +53,8 @@ function makeMeta(id) {
   const videos = Array.from({ length: cartoon.episodes }, (_, index) => {
     const episode = index + 1;
     return { id: videoId(cartoon.id, episode), title: `الحلقة ${episode}`, season: 1,
-      episode, released: new Date(Date.UTC(2000, 0, episode)).toISOString() };
+      episode, released: new Date(Date.UTC(2000, 0, episode)).toISOString(),
+      ...(cartoon.episodeThumbnail || cartoon.poster ? { thumbnail: cartoon.episodeThumbnail || cartoon.poster } : {}) };
   });
   return { meta: { id: addonId(cartoon.id), type: "series", name: cartoon.name,
     description: cartoon.description || "", releaseInfo: cartoon.releaseInfo || "",
@@ -87,6 +89,16 @@ function createApp() {
       return res.end('<meta charset="utf-8"><title>Cartoon Aziz</title><h1>Cartoon Aziz</h1><p><a href="/manifest.json">فتح manifest.json</a></p>');
     }
     if (pathname === "/manifest.json") return json(makeManifest());
+
+    const assets = {
+      "/assets/app-logo.png": "app-logo.png",
+      "/assets/sally-poster.png": "sally-poster.png"
+    };
+    if (assets[pathname]) {
+      const assetPath = path.join(__dirname, "..", "public", assets[pathname]);
+      res.writeHead(200, { "Content-Type": "image/png", "Cache-Control": "public, max-age=86400" });
+      return fs.createReadStream(assetPath).pipe(res);
+    }
 
     if (pathname === "/catalog/series/cartoon-aziz.json") {
       return json(makeCatalog());

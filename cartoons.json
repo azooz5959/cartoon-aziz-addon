@@ -6,10 +6,11 @@
       "name": "سالي",
       "description": "مسلسل سالي الكرتوني الكلاسيكي.",
       "folder": "سالي",
-      "episodes": 46,
+      "episodes": 48,
       "episodePrefix": "E",
       "extension": ".mp4",
-      "poster": "",
+      "poster": "https://cartoon-aziz-addon.onrender.com/assets/sally-poster.png",
+      "episodeThumbnail": "https://cartoon-aziz-addon.onrender.com/assets/sally-poster.png",
       "background": "",
       "releaseInfo": "1985"
     }
