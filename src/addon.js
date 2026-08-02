@@ -27,7 +27,7 @@ function artworkFields(cartoon) {
 function makeManifest() {
   return {
     id: "com.aziz.cartoon",
-    version: "2.0.0",
+    version: "2.0.1",
     name: "Cartoon Aziz",
     logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
     background: "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
@@ -80,14 +80,17 @@ function makeMeta(id, availableEpisodes) {
     .filter((episode) => !allowed || allowed.has(episode))
     .map((episode) => ({
       id: videoId(cartoon.id, episode), title: `${cartoon.episodeTitlePrefix || "الحلقة"} ${episode}`,
-      overview: `${cartoon.name} — الحلقة ${episode}`, season: cartoon.season || 1, episode,
+      overview: `${cartoon.name} — الحلقة ${episode}\n${cartoon.description || ""}`, season: cartoon.season || 1, episode,
       released: new Date(Date.UTC(cartoon.year || 2000, 0, Math.min(episode, 28))).toISOString(),
+      ...(cartoon.logo ? { logo: cartoon.logo } : {}),
+      ...(cartoon.background ? { background: cartoon.background } : {}),
       ...(episodeThumbnail(cartoon, episode) ? { thumbnail: episodeThumbnail(cartoon, episode) } : {})
     }));
   return { meta: {
     id: addonId(cartoon.id), type: "series", name: cartoon.name,
     description: cartoon.description || "", releaseInfo: cartoon.year ? String(cartoon.year) : (cartoon.releaseInfo || ""),
     runtime: cartoon.runtime || "", genres: cartoon.genres || [], language: cartoon.language || "العربية",
+    ...(cartoon.logo ? { logo: cartoon.logo } : {}),
     videos, ...artworkFields(cartoon)
   } };
 }
