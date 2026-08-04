@@ -5,17 +5,17 @@ const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeO
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.4.0");
+  assert.equal(manifest.version, "3.5.0");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
   assert.equal(manifest.catalogs.length, 6);
   const catalog = makeCatalog();
-  assert.equal(catalog.metas.length, 2);
+  assert.equal(catalog.metas.length, 3);
   assert.equal(catalog.metas[0].id, "cartoon-aziz:sally-visual");
   assert.match(catalog.metas[0].poster, /sally-poster\.png$/);
   assert.equal(makeCatalog("cartoon-aziz", "سالي").metas.length, 1);
   assert.equal(makeCatalog("cartoon-aziz", "غير موجود").metas.length, 0);
-  assert.equal(makeCatalog("cartoon-aziz-classics").metas.length, 2);
-  assert.match(makeCatalog("cartoon-aziz-latest").metas[0].name, /موكا موكا/);
+  assert.equal(makeCatalog("cartoon-aziz-classics").metas.length, 3);
+  assert.match(makeCatalog("cartoon-aziz-latest").metas[0].name, /جزيرة الكنز/);
   assert.match(makeCatalog("cartoon-aziz-latest").metas[0].name, /🆕/);
 });
 
@@ -51,4 +51,14 @@ test("Moka Moka has 50 episodes and correct R2 folder", () => {
   assert.match(meta.meta.poster, /%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7\.PNG$/);
   const result = makeStreams("cartoon-aziz:moka-moka:50");
   assert.equal(result.streams[0].url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7/E50.mp4");
+});
+
+test("Treasure Island has 26 episodes, story, poster, and correct R2 folder", () => {
+  const meta = makeMeta("cartoon-aziz:treasure-island");
+  assert.equal(meta.meta.videos.length, 26);
+  assert.equal(meta.meta.releaseInfo, "1978");
+  assert.match(meta.meta.description, /جيم هوكنز/);
+  assert.match(meta.meta.poster, /%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2\.jpg$/);
+  const result = makeStreams("cartoon-aziz:treasure-island:26");
+  assert.equal(result.streams[0].url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2/E26.mp4");
 });

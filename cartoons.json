@@ -43,6 +43,27 @@
       "episodeThumbnail": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7.PNG",
       "background": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7.PNG",
       "releaseInfo": "1993"
+    },
+    {
+      "id": "treasure-island",
+      "name": "جزيرة الكنز",
+      "description": "تبدأ المغامرة عندما يعثر الفتى جيم هوكنز على خريطة سرية تقود إلى كنزٍ مخبأ في جزيرة بعيدة. ينطلق على متن السفينة هيسبانيولا برفقة طاقمها، لكنه يكتشف أن بين البحارة مجموعة من القراصنة يقودهم لونغ جون سيلفر، الذي تجمعه بجيم علاقة معقدة بين الصداقة والخطر. يواجه جيم خلال الرحلة الخيانة والعواصف والمطاردات، ويتعلم معنى الشجاعة والوفاء في واحدة من أشهر حكايات المغامرات البحرية.",
+      "year": 1978,
+      "runtime": "24 دقيقة",
+      "quality": "HD",
+      "language": "العربية",
+      "genres": ["مغامرات", "قراصنة", "عائلي", "كلاسيكي"],
+      "categories": ["classics", "kids", "adventures"],
+      "season": 1,
+      "addedAt": "2026-08-04",
+      "folder": "جزيرة الكنز",
+      "episodes": 26,
+      "episodePrefix": "E",
+      "extension": ".mp4",
+      "poster": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2.jpg",
+      "episodeThumbnail": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2.jpg",
+      "background": "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2.jpg",
+      "releaseInfo": "1978"
     }
   ]
 }
