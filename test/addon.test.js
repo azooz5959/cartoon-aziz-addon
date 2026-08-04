@@ -5,7 +5,7 @@ const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeO
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.6.0");
+  assert.equal(manifest.version, "3.7.0");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
   assert.equal(manifest.catalogs.length, 6);
   const catalog = makeCatalog();
