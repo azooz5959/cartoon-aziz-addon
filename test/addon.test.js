@@ -5,7 +5,7 @@ const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeO
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.5.0");
+  assert.equal(manifest.version, "3.6.0");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
   assert.equal(manifest.catalogs.length, 6);
   const catalog = makeCatalog();
@@ -59,6 +59,8 @@ test("Treasure Island has 26 episodes, story, poster, and correct R2 folder", ()
   assert.equal(meta.meta.releaseInfo, "1978");
   assert.match(meta.meta.description, /جيم هوكنز/);
   assert.match(meta.meta.poster, /%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2\.jpg$/);
+  assert.match(meta.meta.videos[0].thumbnail, /S01E01%20-%2020260804_190847_322%20-%2012m49s\.png$/);
+  assert.match(meta.meta.videos[25].thumbnail, /S01E26%20-%2020260805_020733_042%20-%204m52s\.png$/);
   const result = makeStreams("cartoon-aziz:treasure-island:26");
   assert.equal(result.streams[0].url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2/E26.mp4");
 });
