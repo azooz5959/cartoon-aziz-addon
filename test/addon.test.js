@@ -5,25 +5,24 @@ const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeO
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.7.0");
+  assert.equal(manifest.version, "3.8.1");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
-  assert.equal(manifest.catalogs.length, 6);
+  assert.equal(manifest.catalogs.length, 2);
+  assert.deepEqual(manifest.catalogs.map((item) => item.name), ["كرتون", "أفلام"]);
   const catalog = makeCatalog();
   assert.equal(catalog.metas.length, 3);
   assert.equal(catalog.metas[0].id, "cartoon-aziz:sally-visual");
   assert.match(catalog.metas[0].poster, /sally-poster\.png$/);
-  assert.equal(makeCatalog("cartoon-aziz", "سالي").metas.length, 1);
-  assert.equal(makeCatalog("cartoon-aziz", "غير موجود").metas.length, 0);
-  assert.equal(makeCatalog("cartoon-aziz-classics").metas.length, 3);
-  assert.match(makeCatalog("cartoon-aziz-latest").metas[0].name, /جزيرة الكنز/);
-  assert.match(makeCatalog("cartoon-aziz-latest").metas[0].name, /🆕/);
+  assert.equal(makeCatalog("cartoon-aziz-cartoons", "سالي").metas.length, 1);
+  assert.equal(makeCatalog("cartoon-aziz-cartoons", "غير موجود").metas.length, 0);
+  assert.equal(makeCatalog("cartoon-aziz-movies").metas.length, 0);
 });
 
 test("configuration changes catalogs and display behavior", () => {
   const options = { kids: false, adventures: false, showQuality: false, usePoster: false, autoplay: false, newestFirst: true };
   const token = encodeOptions(options);
   assert.equal(decodeOptions(token).kids, false);
-  assert.deepEqual(makeManifest(options).catalogs.map((item) => item.id), ["cartoon-aziz", "cartoon-aziz-classics", "cartoon-aziz-latest", "cartoon-aziz-recommended"]);
+  assert.deepEqual(makeManifest(options).catalogs.map((item) => item.id), ["cartoon-aziz-cartoons", "cartoon-aziz-movies"]);
   const meta = makeMeta("cartoon-aziz:moka-moka", null, options);
   assert.equal(meta.meta.videos[0].episode, 50);
   assert.equal(meta.meta.videos[0].thumbnail, undefined);
