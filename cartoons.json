@@ -201,6 +201,62 @@
       "runtime" : "24 دقيقة",
       "season" : 1,
       "year" : 1960
+    },
+    {
+      "addedAt" : "2026-08-05",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA.png",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures"
+      ],
+      "description" : "تدور أحداث الجاسوسات الجزء الرابع حول ثلاث فتيات مراهقات يعشن في مدينة بيفرلي هيلز وهن سام وكلوفر وأليكس. تبدو حياتهن طبيعية مثل أي طالبات في المدرسة، لكنهن في الواقع يعملن كعميلات سريات لدى منظمة ووب (WOOHP) بقيادة جيري. في كل حلقة تُكلف الجاسوسات بمهمة جديدة لمواجهة مجرمين وأشرار يهددون العالم بوسائل غريبة ومبتكرة، مستخدمات أحدث الأجهزة والتقنيات السرية. وبين الدراسة والصداقة والحياة اليومية من جهة، والمهام الخطيرة من جهة أخرى، تخوض الفتيات مغامرات مليئة بالإثارة والكوميديا والعمل الجماعي.",
+      "episodePrefix" : "E",
+      "episodes" : 26,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA.png",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E1.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E2.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E3.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E4.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E5.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E6.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E7.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E8.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E9.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E10.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E11.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E12.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E13.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E14.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E15.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E16.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E17.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E18.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E19.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E20.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E21.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E22.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E23.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E24.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E25.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA/E26.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "الجاسوسات",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "الجاسوسات",
+      "language" : "العربية",
+      "name" : "الجاسوسات",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A7%D8%AA.png",
+      "quality" : "HD",
+      "releaseInfo" : "2001",
+      "runtime" : "24 دقيقة",
+      "season" : 1,
+      "year" : 2001
     }
   ]
 }
