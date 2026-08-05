@@ -40,8 +40,8 @@ function makeManifest(userOptions = {}) {
     { type: "series", id: "cartoon-aziz-movies", name: "أفلام", extra: [{ name: "search", isRequired: false }] }
   ];
   return {
-    id: "com.aziz.cartoon.v3.visual",
-    version: "3.8.1",
+    id: "com.aziz.cartoon.v4",
+    version: "3.8.2",
     name: "Cartoon Aziz",
     logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
     background: "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",

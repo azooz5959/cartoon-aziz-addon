@@ -1,6 +1,6 @@
 {
   "name": "cartoon-aziz-addon",
-  "version": "3.8.1",
+  "version": "3.8.2",
   "private": true,
   "description": "إضافة Stremio/Harbor لمكتبة Cartoon Aziz على Cloudflare R2",
   "main": "src/server.js",
