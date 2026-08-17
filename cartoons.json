@@ -831,6 +831,38 @@
       "runtime" : "24 دقيقة",
       "season" : 1,
       "year" : 1991
+    },
+    {
+      "addedAt" : "2026-08-17",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%94%D8%AE%D9%8A%20%D8%A7%D9%84%D8%AF%D8%A8%202.jpg",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "قصة الفيلم تكملة لجزء الأول (أخي الدب) و هي أن الدب (كيناي) يعيش بسعادة مع شقيقه الدب (كودا) , و لكن بسبب ذكريات الطفولة يجب على (كيناي ) أن يذهب في رحلة طويلة إلى (كروبيري) مع نيتا (صديقه) , نيتا يريد حرق تميمة أعطى كيناي لها في شلالات (هوكاني) , يتعين عليها أن تفعل ذلك مع كيناي لإرسال ما يصل إلى السندات الأرواح . في البداية، كيناي يرفض، ولكن يوافق في نهاية المطاف.",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%94%D8%AE%D9%8A%20%D8%A7%D9%84%D8%AF%D8%A8%202.jpg",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A3%D8%AE%D9%8A%20%D8%A7%D9%84%D8%AF%D8%A8%202/%D8%A3%D8%AE%D9%8A%20%D8%A7%D9%84%D8%AF%D8%A8%202.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "أخي الدب 2",
+      "genres" : [
+        "أفلام"
+      ],
+      "id" : "أخي-الدب-2",
+      "language" : "العربية",
+      "name" : "أخي الدب 2",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%94%D8%AE%D9%8A%20%D8%A7%D9%84%D8%AF%D8%A8%202.jpg",
+      "quality" : "HD",
+      "releaseInfo" : "2006",
+      "runtime" : "1:13:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 2006
     }
   ]
 }
