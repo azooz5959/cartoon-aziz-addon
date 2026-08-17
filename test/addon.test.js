@@ -1,11 +1,11 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeOptions } = require("../src/addon");
+const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeOptions, isMovie } = require("../src/addon");
 
 test("manifest and catalog are valid", async () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.8.3");
+  assert.equal(manifest.version, "3.8.4");
   assert.equal(manifest.id, "com.aziz.cartoon.v4");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
   assert.equal(manifest.catalogs.length, 2);
@@ -17,6 +17,19 @@ test("manifest and catalog are valid", async () => {
   assert.equal(makeCatalog("cartoon-aziz-cartoons", "سالي").metas.length, 1);
   assert.equal(makeCatalog("cartoon-aziz-cartoons", "غير موجود").metas.length, 0);
   assert.equal(makeCatalog("cartoon-aziz-movies").metas.length, 0);
+});
+
+test("movie entries are routed only to the movies catalog", () => {
+  assert.equal(isMovie({ type: "movie" }), true);
+  assert.equal(isMovie({ categories: ["movies"] }), true);
+  assert.equal(isMovie({ categories: ["classics", "kids"] }), false);
+});
+
+test("Harbor season and episode stream ids are accepted", () => {
+  const legacy = makeStreams("cartoon-aziz:sally-visual:1");
+  const harbor = makeStreams("cartoon-aziz:sally-visual:1:1");
+  assert.equal(harbor.streams.length, 1);
+  assert.equal(harbor.streams[0].url, legacy.streams[0].url);
 });
 
 test("configuration changes catalogs and display behavior", () => {
