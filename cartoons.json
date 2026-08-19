@@ -1178,6 +1178,138 @@
       "runtime" : "22 دقيقة",
       "season" : 1,
       "year" : 2006
+    },
+    {
+      "addedAt" : "2026-08-19",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%AF%D9%8A%D9%86%D8%A7%D8%B5%D9%88%D8%B1%20%D8%A7%D9%84%D9%84%D8%B7%D9%8A%D9%81.jpg",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "يحكي الفيلم قصة الديناصور المراهق والمنتمي إلى فصيلة (أباتوصور) يُدعى (أرلو) الذي فقد اباه في حادث مأسوي بعد فيضان نهر وغرق الاب ، وعلى أثره يخرج في رحلة، حيث يقابل الفتى (سبوت) من بني البشر، تتطور بينهم علاقة صداقة تغير مجرى حياتهم",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%AF%D9%8A%D9%86%D8%A7%D8%B5%D9%88%D8%B1%20%D8%A7%D9%84%D9%84%D8%B7%D9%8A%D9%81.jpg",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%AF%D9%8A%D9%86%D8%A7%D8%B5%D9%88%D8%B1%20%D8%A7%D9%84%D9%84%D8%B7%D9%8A%D9%81/E1.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "الديناصور اللطيف",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "الديناصور-اللطيف",
+      "language" : "العربية",
+      "name" : "الديناصور اللطيف",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%AF%D9%8A%D9%86%D8%A7%D8%B5%D9%88%D8%B1%20%D8%A7%D9%84%D9%84%D8%B7%D9%8A%D9%81.jpg",
+      "quality" : "HD",
+      "releaseInfo" : "2015",
+      "runtime" : "1:33:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 2015
+    },
+    {
+      "addedAt" : "2026-08-19",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%B3%D9%8A%D9%81%20%D8%A7%D9%84%D9%85%D8%BA%D9%85%D9%88%D8%B1.jpg",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "صبي فقير يدعى آرثر يتعلم قوة الحب، والعطف، والمعرفة والشجاعة مع مساعدة من المعالج يسمى ميرلين في الطريق لتصبح واحدة من ملوك الأكثر حبا في تاريخ إنجلترا.\n",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%B3%D9%8A%D9%81%20%D8%A7%D9%84%D9%85%D8%BA%D9%85%D9%88%D8%B1.jpg",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%A7%D9%84%D8%B3%D9%8A%D9%81%20%D8%A7%D9%84%D9%85%D8%BA%D9%85%D9%88%D8%B1/E1.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "السيف المغمور",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "السيف-المغمور",
+      "language" : "العربية",
+      "name" : "السيف المغمور",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%A7%D9%84%D8%B3%D9%8A%D9%81%20%D8%A7%D9%84%D9%85%D8%BA%D9%85%D9%88%D8%B1.jpg",
+      "quality" : "HD",
+      "releaseInfo" : "2015",
+      "runtime" : "1:33:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 2015
+    },
+    {
+      "addedAt" : "2026-08-19",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AA%D9%86%D8%A9%20%D9%88%D8%B1%D9%86%D8%A9%20%E2%88%B6%20%D8%B3%D8%B1%20%D8%A7%D9%84%D8%A7%D9%94%D8%AC%D9%86%D8%AD%D8%A9%20.jpg",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "في نهاية فصل الشتاء تدفع قوة خفية بالجني اللطيف (تينكربيل) لدخول غابة الشتاء المحرمة، وتقوي طبيعته الفضولية من تلك الرغبة، ويقابل في الغابة جني الصقيع (بيري وينكل) الذي يملك القدرة على حل لغز الأجنحة الغامض، ويخوضان مغامرة مثيرة تحدد مصير عالمهم، وفي ذات الوقت تواجه الجنية (بيكسي) تهديدًا لايمكن مواجهته إلا باتحاد الجماعة فهل سينجحون؟",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AA%D9%86%D8%A9%20%D9%88%D8%B1%D9%86%D8%A9%20%E2%88%B6%20%D8%B3%D8%B1%20%D8%A7%D9%84%D8%A7%D9%94%D8%AC%D9%86%D8%AD%D8%A9%20.jpg",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%AA%D9%86%D8%A9%20%D9%88%D8%B1%D9%86%D8%A9%20%E2%88%B6%20%D8%B3%D8%B1%20%D8%A7%D9%84%D8%A3%D8%AC%D9%86%D8%AD%D8%A9/%D8%AA%D9%86%D8%A9%20%D9%88%D8%B1%D9%86%D8%A9%20%E2%88%B6%20%D8%B3%D8%B1%20%D8%A7%D9%84%D8%A3%D8%AC%D9%86%D8%AD%D8%A9.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "تنة ورنة ∶ سر الأجنحة",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "تنة-ورنة-سر-الأجنحة",
+      "language" : "العربية",
+      "name" : "تنة ورنة ∶ سر الأجنحة",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AA%D9%86%D8%A9%20%D9%88%D8%B1%D9%86%D8%A9%20%E2%88%B6%20%D8%B3%D8%B1%20%D8%A7%D9%84%D8%A7%D9%94%D8%AC%D9%86%D8%AD%D8%A9%20.jpg",
+      "quality" : "HD",
+      "releaseInfo" : "2012",
+      "runtime" : "1:15:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 2012
+    },
+    {
+      "addedAt" : "2026-08-19",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%83%D8%B1%D9%88%D9%86%D9%83%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.jpg",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "بعد مغامراته الخطيرة مع باشا والامبراطور كاسكو، قرر كرونك، أحد أتباع “إيزما” السابقين، أن يبدأ حياة جديدة كرئيس للطهاة في مطعمه الخاص . ويحضّر كرونك خطة على نار هادئة تجعله ثرياً، تمكنه من الفوز بإعجاب والده. ولكنه فشل فشلاً ذريعاً واقتنع أن الغنى الحقيقي يكمن في الأصدقاء..",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%83%D8%B1%D9%88%D9%86%D9%83%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.jpg",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%83%D8%B1%D9%88%D9%86%D9%83%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9/%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%83%D8%B1%D9%88%D9%86%D9%83%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "حياة كرونك الجديدة",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "حياة-كرونك-الجديدة",
+      "language" : "العربية",
+      "name" : "حياة كرونك الجديدة",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%83%D8%B1%D9%88%D9%86%D9%83%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.jpg",
+      "quality" : "HD",
+      "releaseInfo" : "2012",
+      "runtime" : "1:15:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 2012
     }
   ]
 }
