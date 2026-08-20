@@ -1,8 +1,8 @@
 <div align="center">
   <img src="public/app-logo-v2.png" width="170" alt="Cartoon Aziz">
   <h1>Cartoon Aziz</h1>
-  <p><strong>عالم الكرتون العربي الكلاسيكي — مكتبة عزيز الخاصة</strong></p>
-  <p>إضافة احترافية لـHarbor وStremio، تعمل عبر Cloudflare R2.</p>
+  <p><strong> الكرتون العربي الكلاسيكي — مكتبة عزيز الخاصة</strong></p>
+  <p>إضافة لـHarbor وStremio، تعمل عبر Cloudflare R2.</p>
   <p><a href="https://cartoon-aziz-addon.onrender.com/configure"><strong>إعداد الإضافة</strong></a> · <a href="https://cartoon-aziz-addon.onrender.com/manifest.json"><strong>Manifest</strong></a> · <a href="https://cartoon-aziz-addon.onrender.com"><strong>صفحة الإضافة</strong></a></p>
 </div>
 
@@ -16,6 +16,4 @@ https://cartoon-aziz-addon.onrender.com/manifest.json
 
 قد يحتاج أول فتح إلى قرابة دقيقة لأن الاستضافة المجانية تدخل وضع السكون عند عدم الاستخدام.
 
-## تنبيه
 
-استخدم فقط المواد التي تملك حق استضافتها ومشاركتها.
