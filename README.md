@@ -16,4 +16,9 @@ https://cartoon-aziz-addon.onrender.com/manifest.json
 
 قد يحتاج أول فتح إلى قرابة دقيقة لأن الاستضافة المجانية تدخل وضع السكون عند عدم الاستخدام.
 
+## دعم المشروع
+
+بدعمكم نستمر ونقدم الأفضل ❤️
+
+[ادعم Cartoon Aziz عبر Ko-fi](https://ko-fi.com/59azooz)
 
