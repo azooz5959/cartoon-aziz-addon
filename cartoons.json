@@ -1390,6 +1390,161 @@
       "runtime" : "22 دقيقة",
       "season" : 1,
       "year" : 1981
+    },
+    {
+      "addedAt" : "2026-08-19",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83.png",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures"
+      ],
+      "description" : "القصة يتميز سونيك بلونه الأزرق الغامق وسرعته التي تفوق سرعة الصوت وهو الذكي سريع البديهة يحب المغامرات كثيرا تشيط يحب الحركة والجري كثيرا ولا يحب الكسل وهو طيب القلب محبوب لجميع ماعدا عدوه اللدود الدكتور ايغمان الذي يريد تحويل الأشجار والحيوانات إلى قطع ميكانيكية روبوتية عن طريق استخدام جواهر خاصةفي أجهزته ولكن البطل سونيك دائما في المرصاد يقف في وجه وأفضل صديق لسونيك هوتيلز\n",
+      "episodePrefix" : "E",
+      "episodes" : 26,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83.png",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E1.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E2.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E3.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E4.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E5.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E6.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E7.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E8.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E9.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E10.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E11.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E12.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E13.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E14.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E15.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E16.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E17.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E18.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E19.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E20.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E21.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E22.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E23.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E24.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E25.mp4",
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83/E26.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "مغامرات قنفوذ سونيك",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "مغامرات-قنفوذ-سونيك",
+      "language" : "العربية",
+      "name" : "مغامرات قنفوذ سونيك",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D9%82%D9%86%D9%81%D9%88%D8%B0%20%D8%B3%D9%88%D9%86%D9%8A%D9%83.png",
+      "quality" : "HD",
+      "releaseInfo" : "1993",
+      "runtime" : "22 دقيقة",
+      "season" : 1,
+      "year" : 1993
+    },
+    {
+      "addedAt" : "2026-08-20",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D8%AE%D8%A8%D8%B1%20%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9%20.png",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "عندما يختطف البروفيسور جرذان الشرير صانع الألعاب الأشهر في لندن، يحاول سيد التنكر اللامع باسل المخبر الشهير وصديقه الموثوق داوزان الإفلات من الفخ النهائي وإحباط الجريمة المثالية.",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D8%AE%D8%A8%D8%B1%20%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9%20.png",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D8%AE%D8%A8%D8%B1%20%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9/E1.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "مغامرات المخبر الشجاع",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "مغامرات-المخبر-الشجاع",
+      "language" : "العربية",
+      "name" : "مغامرات المخبر الشجاع",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D8%BA%D8%A7%D9%85%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D8%AE%D8%A8%D8%B1%20%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9%20.png",
+      "quality" : "HD",
+      "releaseInfo" : "1986",
+      "runtime" : "1:14:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 1986
+    },
+    {
+      "addedAt" : "2026-08-20",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%87%D8%B1%D9%82%D9%84.jpg",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "يتحول (هرقل) ابن إله اليونان (زيوس)، إلى نصف إله ونصف بشر، عن طريق الشرير (حادس) إله الجحيم، الذي يخطط لإسقاط (زيوس)، ولكي يستعيد (هرقل) سر الخلود، يخبره (زيوس) بأن عليه أن يصبح بطل حقيقي.",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%87%D8%B1%D9%82%D9%84.jpg",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%87%D8%B1%D9%82%D9%84/E1.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "هرقل",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "هرقل",
+      "language" : "العربية",
+      "name" : "هرقل",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%87%D8%B1%D9%82%D9%84.jpg",
+      "quality" : "HD",
+      "releaseInfo" : "1997",
+      "runtime" : "1:33:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 1997
+    },
+    {
+      "addedAt" : "2026-08-20",
+      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%88%D9%88%D9%84-%D9%8A%20%20.jpg",
+      "categories" : [
+        "classics",
+        "kids",
+        "adventures",
+        "movies"
+      ],
+      "description" : "تدور أحداث الفيلم حول الروبوت وول-ي، وهو روبوت مُصمم لتنظيف الأرض المهجورة والمغطاة بالنفايات في المستقبل البعيد. يقع وول-ي في حب روبوت آخر إسمها إيف، فيتبعها إلى الفضاء الخارجي في مغامرة تُغير مصير جنسه والجنس البشري. يُظهر كل من الروبوتين مظاهر من حرية الإرادة والمشاعر، التي تتطور مع تقدم أحداث الفيلم.\n",
+      "episodePrefix" : "E",
+      "episodes" : 1,
+      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%88%D9%88%D9%84-%D9%8A%20%20.jpg",
+      "episodeUrls" : [
+        "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%88%D9%88%D9%84-%D9%8A/E1.mp4"
+      ],
+      "extension" : ".mp4",
+      "folder" : "وول-ي",
+      "genres" : [
+        "مغامرات",
+        "عائلي"
+      ],
+      "id" : "وول-ي",
+      "language" : "العربية",
+      "name" : "وول-ي",
+      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%88%D9%88%D9%84-%D9%8A%20%20.jpg",
+      "quality" : "HD",
+      "releaseInfo" : "2008",
+      "runtime" : "1:38:00 دقيقة",
+      "season" : 1,
+      "type" : "movie",
+      "year" : 2008
     }
   ]
 }
