@@ -2,35 +2,6 @@
   "baseUrl" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev",
   "cartoons" : [
     {
-      "addedAt" : "2026-08-02",
-      "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7.PNG",
-      "categories" : [
-        "classics",
-        "kids",
-        "adventures"
-      ],
-      "description" : "تعثر الفتاة يويبا شيكاتاني على ديناصور صغير ظريف، وتطلق عليه اسم موكا موكا نسبةً إلى الكلمات الوحيدة التي ينطق بها. يصبح موكا صديقها المقرب، ويخوضان مع العائلة والأصدقاء سلسلة من المواقف الكوميدية والمغامرات الممتعة المليئة بالمرح والخيال.",
-      "episodePrefix" : "E",
-      "episodes" : 50,
-      "episodeThumbnail" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7.PNG",
-      "extension" : ".mp4",
-      "folder" : "موكا موكا",
-      "genres" : [
-        "كوميديا",
-        "مغامرات",
-        "عائلي"
-      ],
-      "id" : "moka-moka",
-      "language" : "العربية",
-      "name" : "موكا موكا",
-      "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7.PNG",
-      "quality" : "HD",
-      "releaseInfo" : "1993",
-      "runtime" : "24 دقيقة",
-      "season" : 1,
-      "year" : 1993
-    },
-    {
       "addedAt" : "2026-08-04",
       "background" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2.jpg",
       "categories" : [
@@ -1587,7 +1558,7 @@
       "name" : "سالي",
       "poster" : "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/postar/sally-poster.png",
       "quality" : "HD",
-      "releaseInfo" : "",
+      "releaseInfo" : "2026",
       "runtime" : "24 دقيقة",
       "season" : 1,
       "year" : 2026
