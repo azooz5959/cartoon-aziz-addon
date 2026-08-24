@@ -44,7 +44,7 @@ function makeManifest(userOptions = {}) {
     version: "3.8.4",
     name: "Cartoon Aziz",
     logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
-    background: "https://cartoon-aziz-addon.onrender.com/assets/sally-background.png",
+    background: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
     description: "عالم الكرتون العربي الكلاسيكي بجودة عالية — مكتبة عزيز الخاصة",
     resources: ["catalog", "meta", "stream"],
     types: ["series"],
@@ -183,7 +183,7 @@ function welcomePage() {
   *{box-sizing:border-box}
   body{margin:0;background:#05070c;color:#f4f6f9;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden}
   body:before{content:"";position:fixed;inset:0;background:radial-gradient(900px 500px at 85% -10%,#3a2a5c55,transparent),radial-gradient(700px 500px at -10% 30%,#efb74c22,transparent),#05070c;z-index:-2}
-  body:after{content:"";position:fixed;inset:0;background:url('/assets/sally-background.png') center/cover;opacity:.16;filter:saturate(1.2);z-index:-1}
+  body:after{content:"";position:fixed;top:-15%;right:-15%;width:65%;height:65%;background:url('/assets/app-logo-v2.png') center/contain no-repeat;opacity:.14;filter:blur(70px) saturate(1.3);z-index:-1;pointer-events:none}
   .wrap{max-width:1080px;margin:auto;padding:60px 24px 80px}
   .hero{display:flex;gap:36px;align-items:center;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:28px;padding:36px;backdrop-filter:blur(18px);box-shadow:0 30px 80px -30px #000}
   .logo-wrap{position:relative;width:168px;height:168px;flex-shrink:0;border-radius:32px;overflow:hidden;box-shadow:0 20px 50px -12px #000,0 0 0 1px #ffffff1f inset}
@@ -233,7 +233,7 @@ function configurePage() {
   *{box-sizing:border-box}
   body{margin:0;background:#05070c;color:#f4f6f9;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;min-height:100vh}
   body:before{content:"";position:fixed;inset:0;background:radial-gradient(900px 500px at 90% -10%,#3a2a5c4d,transparent),radial-gradient(700px 500px at -10% 40%,#efb74c1c,transparent),#05070c;z-index:-2}
-  body:after{content:"";position:fixed;inset:0;background:url('/assets/sally-background.png') center/cover;opacity:.1;z-index:-1}
+  body:after{content:"";position:fixed;top:-15%;right:-15%;width:55%;height:55%;background:url('/assets/app-logo-v2.png') center/contain no-repeat;opacity:.12;filter:blur(60px) saturate(1.3);z-index:-1;pointer-events:none}
   .wrap{max-width:960px;margin:auto;padding:44px 20px 70px}
   .head{display:flex;align-items:center;gap:22px;margin-bottom:30px;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:24px;padding:24px;backdrop-filter:blur(18px)}
   .logo-wrap{position:relative;width:88px;height:88px;flex-shrink:0;border-radius:22px;overflow:hidden;box-shadow:0 14px 34px -10px #000,0 0 0 1px #ffffff1f inset}
