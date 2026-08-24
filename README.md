@@ -20,6 +20,5 @@ https://cartoon-aziz-addon.onrender.com/manifest.json
 
 بدعمكم نستمر ونقدم الأفضل ❤️
 
-[ادعم عبر Ko-fi](https://ko-fi.com/59azooz)
+[ادعم Cartoon Aziz عبر Ko-fi](https://ko-fi.com/59azooz)
 
-[تابع على X](https://x.com/lazooz59)
