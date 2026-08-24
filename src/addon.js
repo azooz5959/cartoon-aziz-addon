@@ -53,7 +53,7 @@ function makeManifest(userOptions = {}) {
     behaviorHints: { configurable: true, configurationRequired: false },
     stremioAddonsConfig: {
       issuer: "https://stremio-addons.net",
-      signature: "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..." // انسخ القيمة الكاملة من الموقع بدل هذا النص
+      signature: "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..FOkpf7Pk68fGKq_cfs5aSA.Cyf2xHn-hhOgfuSXPPdlrDbjzJuH6iJeMgWDct-54zNaVj-fZ7myqVWmg9M8nY8fbFwY2ihC3v7KtHubZpSXkqu1lui6inh3uhx5QlW5PMPYd7n8OaHZ4bQ1j4I4AOSz.ZmY_mMAvsjC8L9dXZDxjdw"
     }
   };
 }
