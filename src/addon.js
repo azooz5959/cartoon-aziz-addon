@@ -186,9 +186,9 @@ function welcomePage() {
   body:after{content:"";position:fixed;top:-15%;right:-15%;width:65%;height:65%;background:url('/assets/app-logo-v2.png') center/contain no-repeat;opacity:.14;filter:blur(70px) saturate(1.3);z-index:-1;pointer-events:none}
   .wrap{max-width:1080px;margin:auto;padding:60px 24px 80px}
   .hero{display:flex;gap:36px;align-items:center;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:28px;padding:36px;backdrop-filter:blur(18px);box-shadow:0 30px 80px -30px #000}
-  .logo-wrap{position:relative;width:168px;height:168px;flex-shrink:0;border-radius:32px;overflow:hidden;box-shadow:0 20px 50px -12px #000,0 0 0 1px #ffffff1f inset}
-  .logo-wrap .bg{position:absolute;inset:-16px;width:calc(100% + 32px);height:calc(100% + 32px);object-fit:cover;filter:blur(22px) saturate(1.5) brightness(.55);transform:scale(1.15)}
-  .logo-wrap .fg{position:absolute;inset:14%;width:72%;height:72%;object-fit:contain;filter:drop-shadow(0 12px 24px #000a)}
+  .logo-wrap{position:relative;width:180px;height:180px;flex-shrink:0;border-radius:34px;overflow:hidden;box-shadow:0 24px 60px -14px #000,0 0 0 1px #ffffff26 inset,0 0 50px -6px #efb74c55}
+  .logo-wrap .bg{position:absolute;inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px);object-fit:cover;filter:blur(26px) saturate(2.1) brightness(.85);transform:scale(1.3)}
+  .logo-wrap .fg{position:absolute;inset:12%;width:76%;height:76%;object-fit:contain;filter:drop-shadow(0 14px 28px #000c)}
   .tag{color:#efb74c;font-weight:800;letter-spacing:.3px;font-size:14px}
   .hero h1{margin:6px 0 10px;font-size:34px;font-weight:900;background:linear-gradient(90deg,#fff,#e7c98f);-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero p{color:#b6bfca;margin:0 0 22px;line-height:1.7;font-size:15px}
@@ -236,9 +236,9 @@ function configurePage() {
   body:after{content:"";position:fixed;top:-15%;right:-15%;width:55%;height:55%;background:url('/assets/app-logo-v2.png') center/contain no-repeat;opacity:.12;filter:blur(60px) saturate(1.3);z-index:-1;pointer-events:none}
   .wrap{max-width:960px;margin:auto;padding:44px 20px 70px}
   .head{display:flex;align-items:center;gap:22px;margin-bottom:30px;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:24px;padding:24px;backdrop-filter:blur(18px)}
-  .logo-wrap{position:relative;width:88px;height:88px;flex-shrink:0;border-radius:22px;overflow:hidden;box-shadow:0 14px 34px -10px #000,0 0 0 1px #ffffff1f inset}
-  .logo-wrap .bg{position:absolute;inset:-10px;width:calc(100% + 20px);height:calc(100% + 20px);object-fit:cover;filter:blur(14px) saturate(1.5) brightness(.55);transform:scale(1.15)}
-  .logo-wrap .fg{position:absolute;inset:13%;width:74%;height:74%;object-fit:contain;filter:drop-shadow(0 8px 16px #000a)}
+  .logo-wrap{position:relative;width:96px;height:96px;flex-shrink:0;border-radius:24px;overflow:hidden;box-shadow:0 16px 40px -10px #000,0 0 0 1px #ffffff26 inset,0 0 34px -4px #efb74c55}
+  .logo-wrap .bg{position:absolute;inset:-16px;width:calc(100% + 32px);height:calc(100% + 32px);object-fit:cover;filter:blur(18px) saturate(2.1) brightness(.85);transform:scale(1.3)}
+  .logo-wrap .fg{position:absolute;inset:11%;width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 10px 18px #000c)}
   .head h1{margin:0;font-size:24px;font-weight:900}
   .head p{color:#9aa5b1;margin:6px 0 0;font-size:14px}
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
