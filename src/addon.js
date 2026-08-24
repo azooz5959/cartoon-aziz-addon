@@ -180,18 +180,102 @@ function welcomePage() {
   const { cartoons } = loadData();
   const total = cartoons.reduce((sum, item) => sum + item.episodes, 0);
   return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cartoon Aziz</title><style>
-  *{box-sizing:border-box}body{margin:0;background:#070b10;color:#fff;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,#070b10 20%,transparent),url('/assets/sally-background.png') center/cover;opacity:.3;z-index:-1}.wrap{max-width:1050px;margin:auto;padding:50px 24px}.hero{display:flex;gap:28px;align-items:center}.logo{width:150px;border-radius:28px;box-shadow:0 15px 55px #000}.tag{color:#efb74c;font-weight:800}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{background:#efb74c;color:#111;padding:13px 20px;border-radius:12px;text-decoration:none;font-weight:800}.ghost{background:#ffffff12;color:#fff;border:1px solid #ffffff25}.stats,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:35px}.box,.card{background:#111923dc;border:1px solid #ffffff12;border-radius:18px;padding:20px}.num{font-size:30px;font-weight:900;color:#efb74c}.card{display:flex;gap:16px;align-items:center}.card img{width:80px;height:110px;object-fit:cover;border-radius:10px}small{color:#aeb7c2}@media(max-width:650px){.hero{display:block}.logo{width:110px}.stats,.cards{grid-template-columns:1fr}}</style></head><body><main class="wrap"><section class="hero"><img class="logo" src="/assets/app-logo-v2.png"><div><div class="tag">مكتبة عزيز الخاصة</div><h1>Cartoon Aziz</h1><p>كلاسيكيات الكرتون العربي، مرتبة وجاهزة للمشاهدة بجودة عالية.</p><div class="buttons"><a class="btn" href="/configure">إعداد الإضافة</a><a class="btn ghost" href="/manifest.json">Manifest</a></div></div></section><section class="stats"><div class="box"><div class="num">✓</div><small>حالة الإضافة</small><div>تعمل الآن</div></div><div class="box"><div class="num">${cartoons.length}</div><small>المسلسلات</small></div><div class="box"><div class="num">${total}</div><small>الحلقات</small></div></section><h2>المكتبة</h2><section class="cards">${cartoons.map(c => `<div class="card"><img src="${c.poster}"><div><b>${c.name}</b><br><small>${c.year || ""} • ${c.quality || "HD"}<br>${c.episodes} حلقة</small></div></div>`).join("")}</section></main></body></html>`;
+  *{box-sizing:border-box}
+  body{margin:0;background:#05070c;color:#f4f6f9;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden}
+  body:before{content:"";position:fixed;inset:0;background:radial-gradient(900px 500px at 85% -10%,#3a2a5c55,transparent),radial-gradient(700px 500px at -10% 30%,#efb74c22,transparent),#05070c;z-index:-2}
+  body:after{content:"";position:fixed;inset:0;background:url('/assets/sally-background.png') center/cover;opacity:.16;filter:saturate(1.2);z-index:-1}
+  .wrap{max-width:1080px;margin:auto;padding:60px 24px 80px}
+  .hero{display:flex;gap:36px;align-items:center;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:28px;padding:36px;backdrop-filter:blur(18px);box-shadow:0 30px 80px -30px #000}
+  .logo-wrap{position:relative;width:168px;height:168px;flex-shrink:0;border-radius:32px;overflow:hidden;box-shadow:0 20px 50px -12px #000,0 0 0 1px #ffffff1f inset}
+  .logo-wrap .bg{position:absolute;inset:-16px;width:calc(100% + 32px);height:calc(100% + 32px);object-fit:cover;filter:blur(22px) saturate(1.5) brightness(.55);transform:scale(1.15)}
+  .logo-wrap .fg{position:absolute;inset:14%;width:72%;height:72%;object-fit:contain;filter:drop-shadow(0 12px 24px #000a)}
+  .tag{color:#efb74c;font-weight:800;letter-spacing:.3px;font-size:14px}
+  .hero h1{margin:6px 0 10px;font-size:34px;font-weight:900;background:linear-gradient(90deg,#fff,#e7c98f);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:#b6bfca;margin:0 0 22px;line-height:1.7;font-size:15px}
+  .buttons{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{background:linear-gradient(135deg,#f5c565,#e0a53a);color:#241705;padding:13px 22px;border-radius:13px;text-decoration:none;font-weight:800;box-shadow:0 10px 24px -8px #efb74c88;transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px #efb74caa}
+  .ghost{background:#ffffff0f;color:#fff;border:1px solid #ffffff2a;box-shadow:none;backdrop-filter:blur(6px)}
+  .ghost:hover{background:#ffffff1c}
+  .stats,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+  .box,.card{background:linear-gradient(160deg,#ffffff0d,#ffffff02);border:1px solid #ffffff15;border-radius:20px;padding:22px;backdrop-filter:blur(14px);transition:transform .15s,border-color .15s}
+  .box:hover,.card:hover{transform:translateY(-3px);border-color:#efb74c55}
+  .num{font-size:32px;font-weight:900;color:#efb74c}
+  .card{display:flex;gap:16px;align-items:center}
+  .card img{width:74px;height:100px;object-fit:cover;border-radius:12px;box-shadow:0 10px 22px -8px #000}
+  small{color:#8b96a3}
+  h2{font-size:22px;margin:44px 0 18px;font-weight:800}
+  @media(max-width:650px){.hero{flex-direction:column;text-align:center;padding:28px}.hero p{text-align:center}.buttons{justify-content:center}.logo-wrap{width:140px;height:140px}.stats,.cards{grid-template-columns:1fr}}
+  </style></head><body><main class="wrap">
+  <section class="hero">
+    <div class="logo-wrap"><img class="bg" src="/assets/app-logo-v2.png"><img class="fg" src="/assets/app-logo-v2.png"></div>
+    <div>
+      <div class="tag">مكتبة عزيز الخاصة</div>
+      <h1>Cartoon Aziz</h1>
+      <p>كلاسيكيات الكرتون العربي، مرتبة وجاهزة للمشاهدة بجودة عالية.</p>
+      <div class="buttons"><a class="btn" href="/configure">إعداد الإضافة</a><a class="btn ghost" href="/manifest.json">Manifest</a></div>
+    </div>
+  </section>
+  <section class="stats">
+    <div class="box"><div class="num">✓</div><small>حالة الإضافة</small><div>تعمل الآن</div></div>
+    <div class="box"><div class="num">${cartoons.length}</div><small>المسلسلات</small></div>
+    <div class="box"><div class="num">${total}</div><small>الحلقات</small></div>
+  </section>
+  <h2>المكتبة</h2>
+  <section class="cards">${cartoons.map(c => `<div class="card"><img src="${c.poster}"><div><b>${c.name}</b><br><small>${c.year || ""} • ${c.quality || "HD"}<br>${c.episodes} حلقة</small></div></div>`).join("")}</section>
+  </main></body></html>`;
 }
 
 function configurePage() {
   const { cartoons } = loadData();
   const total = cartoons.reduce((sum, item) => sum + item.episodes, 0);
   return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>إعداد Cartoon Aziz</title><style>
-  *{box-sizing:border-box}body{margin:0;background:#080d13;color:#f7f8fa;font-family:system-ui,-apple-system,sans-serif}.wrap{max-width:920px;margin:auto;padding:35px 20px}.head{display:flex;align-items:center;gap:18px;margin-bottom:24px}.head img{width:82px;border-radius:20px}.head p{color:#94a0ad;margin:4px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:#111923;border:1px solid #ffffff12;border-radius:18px;padding:22px}.card h2{font-size:18px;margin:0 0 15px}.option{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #ffffff0d}.option:last-child{border:0}.switch{position:relative;width:48px;height:27px}.switch input{opacity:0}.slider{position:absolute;inset:0;background:#35404c;border-radius:30px;cursor:pointer}.slider:before{content:"";position:absolute;width:21px;height:21px;right:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}.switch input:checked+.slider{background:#eeb54a}.switch input:checked+.slider:before{transform:translateX(-21px)}select,.url{width:100%;background:#080d13;color:#fff;border:1px solid #ffffff1c;border-radius:10px;padding:12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.stat{background:#111923;border:1px solid #ffffff12;border-radius:14px;padding:16px}.stat b{display:block;color:#eeb54a;font-size:22px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}button,a.btn{border:0;border-radius:11px;padding:13px 18px;background:#eeb54a;color:#111;font-weight:800;text-decoration:none;cursor:pointer}.secondary{background:#202a35!important;color:#fff!important}.status{color:#78df98}.muted{color:#94a0ad;font-size:13px}@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}</style></head><body><main class="wrap"><div class="head"><img src="/assets/app-logo-v2.png"><div><h1>إعداد Cartoon Aziz</h1><p>خصص مكتبتك ثم ثبّت الرابط الناتج في Harbor.</p></div></div>
+  *{box-sizing:border-box}
+  body{margin:0;background:#05070c;color:#f4f6f9;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;min-height:100vh}
+  body:before{content:"";position:fixed;inset:0;background:radial-gradient(900px 500px at 90% -10%,#3a2a5c4d,transparent),radial-gradient(700px 500px at -10% 40%,#efb74c1c,transparent),#05070c;z-index:-2}
+  body:after{content:"";position:fixed;inset:0;background:url('/assets/sally-background.png') center/cover;opacity:.1;z-index:-1}
+  .wrap{max-width:960px;margin:auto;padding:44px 20px 70px}
+  .head{display:flex;align-items:center;gap:22px;margin-bottom:30px;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:24px;padding:24px;backdrop-filter:blur(18px)}
+  .logo-wrap{position:relative;width:88px;height:88px;flex-shrink:0;border-radius:22px;overflow:hidden;box-shadow:0 14px 34px -10px #000,0 0 0 1px #ffffff1f inset}
+  .logo-wrap .bg{position:absolute;inset:-10px;width:calc(100% + 20px);height:calc(100% + 20px);object-fit:cover;filter:blur(14px) saturate(1.5) brightness(.55);transform:scale(1.15)}
+  .logo-wrap .fg{position:absolute;inset:13%;width:74%;height:74%;object-fit:contain;filter:drop-shadow(0 8px 16px #000a)}
+  .head h1{margin:0;font-size:24px;font-weight:900}
+  .head p{color:#9aa5b1;margin:6px 0 0;font-size:14px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:linear-gradient(160deg,#ffffff0d,#ffffff02);border:1px solid #ffffff15;border-radius:20px;padding:24px;backdrop-filter:blur(14px)}
+  .card h2{font-size:16px;margin:0 0 16px;font-weight:800;color:#e7c98f}
+  .option{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #ffffff0d}
+  .option:last-child{border:0}
+  .switch{position:relative;width:48px;height:27px}
+  .switch input{opacity:0}
+  .slider{position:absolute;inset:0;background:#2a3441;border-radius:30px;cursor:pointer;transition:.2s}
+  .slider:before{content:"";position:absolute;width:21px;height:21px;right:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 2px 6px #0006}
+  .switch input:checked+.slider{background:linear-gradient(135deg,#f5c565,#e0a53a)}
+  .switch input:checked+.slider:before{transform:translateX(-21px)}
+  select,.url{width:100%;background:#0a0f16;color:#fff;border:1px solid #ffffff1f;border-radius:12px;padding:12px 14px;font-size:14px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+  .stat{background:linear-gradient(160deg,#ffffff0d,#ffffff02);border:1px solid #ffffff15;border-radius:16px;padding:18px;text-align:center;backdrop-filter:blur(14px)}
+  .stat b{display:block;color:#efb74c;font-size:24px;font-weight:900}
+  .stat span{color:#8b96a3;font-size:12.5px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  button,a.btn{border:0;border-radius:12px;padding:13px 20px;background:linear-gradient(135deg,#f5c565,#e0a53a);color:#241705;font-weight:800;text-decoration:none;cursor:pointer;box-shadow:0 10px 22px -8px #efb74c77;transition:transform .15s}
+  button:hover,a.btn:hover{transform:translateY(-2px)}
+  .secondary{background:#ffffff10!important;color:#fff!important;border:1px solid #ffffff22;box-shadow:none!important}
+  .status{color:#78df98}
+  .muted{color:#8b96a3;font-size:13px}
+  @media(max-width:700px){.grid,.stats{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.head{flex-direction:column;text-align:center}}
+  </style></head><body><main class="wrap">
+  <div class="head">
+    <div class="logo-wrap"><img class="bg" src="/assets/app-logo-v2.png"><img class="fg" src="/assets/app-logo-v2.png"></div>
+    <div><h1>إعداد Cartoon Aziz</h1><p>خصص مكتبتك ثم ثبّت الرابط الناتج في Harbor.</p></div>
+  </div>
   <section class="stats"><div class="stat"><b id="r2">…</b><span>حالة R2</span></div><div class="stat"><b>${cartoons.length}</b><span>المسلسلات</span></div><div class="stat"><b>${total}</b><span>الحلقات</span></div><div class="stat"><b>3.8.4</b><span>الإصدار</span></div></section>
-  <div class="grid"><section class="card"><h2>أقسام المكتبة</h2><div class="option"><span>كرتون</span><b>مفعّل</b></div><div class="option"><span>أفلام</span><b>مفعّل</b></div></section>
-  <section class="card"><h2>العرض والتشغيل</h2>${[["showQuality","إظهار الجودة بجانب السيرفر"],["usePoster","استخدام البوستر للحلقات"],["hideMissing","إخفاء الروابط غير الموجودة"],["autoplay","تشغيل الحلقة التالية تلقائيًا"],["newestFirst","عرض الأحدث أولًا"]].map(([id,label])=>`<div class="option"><span>${label}</span><label class="switch"><input id="${id}" type="checkbox" ${id==='newestFirst'?'':'checked'}><span class="slider"></span></label></div>`).join("")}<div class="option"><span>الجودة الافتراضية</span><select id="quality" style="width:125px"><option value="auto">تلقائية</option><option value="1080p">1080p</option><option value="HD">HD</option></select></div></section></div>
-  <section class="card" style="margin-top:16px"><h2>رابط التثبيت</h2><input class="url" id="url" readonly><p class="muted">آخر تحديث: ${fs.statSync(dataPath).mtime.toLocaleString("ar-SA")}</p><div class="actions"><button id="install">تثبيت في Harbor</button><button class="secondary" id="copy">نسخ رابط Manifest</button><button class="secondary" id="save">حفظ الإعدادات</button><button class="secondary" id="reset">إعادة الافتراضي</button><a class="btn secondary" href="/">الصفحة الرئيسية</a></div></section></main><script>
+  <div class="grid">
+    <section class="card"><h2>أقسام المكتبة</h2><div class="option"><span>كرتون</span><b>مفعّل</b></div><div class="option"><span>أفلام</span><b>مفعّل</b></div></section>
+    <section class="card"><h2>العرض والتشغيل</h2>${[["showQuality","إظهار الجودة بجانب السيرفر"],["usePoster","استخدام البوستر للحلقات"],["hideMissing","إخفاء الروابط غير الموجودة"],["autoplay","تشغيل الحلقة التالية تلقائيًا"],["newestFirst","عرض الأحدث أولًا"]].map(([id,label])=>`<div class="option"><span>${label}</span><label class="switch"><input id="${id}" type="checkbox" ${id==='newestFirst'?'':'checked'}><span class="slider"></span></label></div>`).join("")}<div class="option"><span>الجودة الافتراضية</span><select id="quality" style="width:125px"><option value="auto">تلقائية</option><option value="1080p">1080p</option><option value="HD">HD</option></select></div></section>
+  </div>
+  <section class="card" style="margin-top:16px"><h2>رابط التثبيت</h2><input class="url" id="url" readonly><p class="muted">آخر تحديث: ${fs.statSync(dataPath).mtime.toLocaleString("ar-SA")}</p><div class="actions"><button id="install">تثبيت في Harbor</button><button class="secondary" id="copy">نسخ رابط Manifest</button><button class="secondary" id="save">حفظ الإعدادات</button><button class="secondary" id="reset">إعادة الافتراضي</button><a class="btn secondary" href="/">الصفحة الرئيسية</a></div></section>
+  </main><script>
   const ids=['showQuality','usePoster','hideMissing','autoplay','newestFirst'];
   const defaults=${JSON.stringify(DEFAULT_OPTIONS)};
   const read=()=>Object.assign({},Object.fromEntries(ids.map(id=>[id,document.getElementById(id).checked])),{quality:document.getElementById('quality').value});
