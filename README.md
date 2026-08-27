@@ -16,21 +16,6 @@ https://cartoon-aziz-addon.onrender.com/manifest.json
 
 قد يحتاج أول فتح إلى قرابة دقيقة لأن الاستضافة المجانية تدخل وضع السكون عند عدم الاستخدام.
 
-## إعداد Cloudflare R2 وتقليل استهلاك Render
-
-الفيديو يُرسل إلى Stremio كرابط R2 مباشر ولا يمر عبر Render. ارفع
-`public/app-logo-v2.png` إلى مجلد مثل `assets/` في R2، ثم أضف متغير البيئة:
-
-```text
-ASSET_BASE_URL=https://YOUR-R2-PUBLIC-DOMAIN/assets
-```
-
-إذا لم تضبطه، تستخدم الإضافة تلقائيًا مجلد `assets` في R2 الحالي.
-اترك `CHECK_STREAMS` غير مضبوط (أو `false`) لمنع فحوص `HEAD` الكثيرة. لا تضبطه
-على `true` إلا عند الحاجة لفحص وجود الحلقات؛ ويمكن عندها تحديد مدة التخزين عبر
-`STREAM_CHECK_TTL_MS` (الافتراضي 6 ساعات).
-
-إعداد `stremioAddonsConfig` والـclaim محفوظ داخل الـmanifest كما هو.
 
 ## دعم المشروع
 
