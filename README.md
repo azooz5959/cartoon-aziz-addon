@@ -25,7 +25,7 @@ https://cartoon-aziz-addon.onrender.com/manifest.json
 ASSET_BASE_URL=https://YOUR-R2-PUBLIC-DOMAIN/assets
 ```
 
-إذا لم تضبطه، تستخدم الإضافة تلقائيًا `baseUrl/assets` من `cartoons.json`.
+إذا لم تضبطه، تستخدم الإضافة تلقائيًا مجلد `assets` في R2 الحالي.
 اترك `CHECK_STREAMS` غير مضبوط (أو `false`) لمنع فحوص `HEAD` الكثيرة. لا تضبطه
 على `true` إلا عند الحاجة لفحص وجود الحلقات؛ ويمكن عندها تحديد مدة التخزين عبر
 `STREAM_CHECK_TTL_MS` (الافتراضي 6 ساعات).

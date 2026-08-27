@@ -5,7 +5,7 @@ const { createApp, makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptio
 test("manifest, claim, and catalogs remain valid", () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
-  assert.equal(manifest.version, "3.8.4");
+  assert.equal(manifest.version, "3.8.5");
   assert.equal(manifest.id, "com.aziz.cartoon.v4");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
   assert.doesNotMatch(manifest.logo, /onrender\.com/);

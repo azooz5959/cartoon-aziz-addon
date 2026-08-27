@@ -23,7 +23,7 @@ function loadData() {
 function assetBaseUrl() {
   const configured = process.env.ASSET_BASE_URL || process.env.R2_ASSET_BASE_URL;
   if (configured) return configured.replace(/\/$/, "");
-  return `${loadData().baseUrl.replace(/\/$/, "")}/assets`;
+  return "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/assets";
 }
 
 function assetUrl(filename) {
@@ -60,7 +60,7 @@ function makeManifest(userOptions = {}) {
   ];
   return {
     id: "com.aziz.cartoon.v4",
-    version: "3.8.4",
+    version: "3.8.5",
     name: "Cartoon Aziz",
     logo: assetUrl("app-logo-v2.png"),
     background: assetUrl("app-logo-v2.png"),
@@ -290,7 +290,7 @@ function configurePage() {
     <div class="logo-wrap"><img class="bg" src="${assetUrl("app-logo-v2.png")}"><img class="fg" src="${assetUrl("app-logo-v2.png")}"></div>
     <div><h1>إعداد Cartoon Aziz</h1><p>خصص مكتبتك ثم ثبّت الرابط الناتج في Harbor.</p></div>
   </div>
-  <section class="stats"><div class="stat"><b id="r2">…</b><span>حالة R2</span></div><div class="stat"><b>${cartoons.length}</b><span>المسلسلات</span></div><div class="stat"><b>${total}</b><span>الحلقات</span></div><div class="stat"><b>3.8.4</b><span>الإصدار</span></div></section>
+  <section class="stats"><div class="stat"><b id="r2">…</b><span>حالة R2</span></div><div class="stat"><b>${cartoons.length}</b><span>المسلسلات</span></div><div class="stat"><b>${total}</b><span>الحلقات</span></div><div class="stat"><b>3.8.5</b><span>الإصدار</span></div></section>
   <div class="grid">
     <section class="card"><h2>أقسام المكتبة</h2><div class="option"><span>كرتون</span><b>مفعّل</b></div><div class="option"><span>أفلام</span><b>مفعّل</b></div></section>
     <section class="card"><h2>العرض والتشغيل</h2>${[["showQuality","إظهار الجودة بجانب السيرفر"],["usePoster","استخدام البوستر للحلقات"],["hideMissing","إخفاء الروابط غير الموجودة"],["autoplay","تشغيل الحلقة التالية تلقائيًا"],["newestFirst","عرض الأحدث أولًا"]].map(([id,label])=>`<div class="option"><span>${label}</span><label class="switch"><input id="${id}" type="checkbox" ${id==='newestFirst'?'':'checked'}><span class="slider"></span></label></div>`).join("")}<div class="option"><span>الجودة الافتراضية</span><select id="quality" style="width:125px"><option value="auto">تلقائية</option><option value="1080p">1080p</option><option value="HD">HD</option></select></div></section>
