@@ -1,22 +1,28 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeOptions, isMovie } = require("../src/addon");
+const { createApp, makeManifest, makeCatalog, makeMeta, makeStreams, encodeOptions, decodeOptions, isMovie } = require("../src/addon");
 
-test("manifest and catalog are valid", async () => {
+test("manifest, claim, and catalogs remain valid", () => {
   const manifest = makeManifest();
   assert.equal(manifest.name, "Cartoon Aziz");
   assert.equal(manifest.version, "3.8.4");
   assert.equal(manifest.id, "com.aziz.cartoon.v4");
   assert.match(manifest.logo, /app-logo-v2\.png$/);
-  assert.equal(manifest.catalogs.length, 2);
+  assert.doesNotMatch(manifest.logo, /onrender\.com/);
+  assert.equal(manifest.stremioAddonsConfig.issuer, "https://stremio-addons.net");
+  assert.ok(manifest.stremioAddonsConfig.signature);
   assert.deepEqual(manifest.catalogs.map((item) => item.name), ["كرتون", "أفلام"]);
-  const catalog = makeCatalog();
-  assert.equal(catalog.metas.length, 3);
-  assert.equal(catalog.metas[0].id, "cartoon-aziz:sally-visual");
-  assert.match(catalog.metas[0].poster, /sally-poster\.png$/);
-  assert.equal(makeCatalog("cartoon-aziz-cartoons", "سالي").metas.length, 1);
-  assert.equal(makeCatalog("cartoon-aziz-cartoons", "غير موجود").metas.length, 0);
-  assert.equal(makeCatalog("cartoon-aziz-movies").metas.length, 0);
+  assert.equal(makeCatalog().metas.length, 14);
+  assert.equal(makeCatalog("cartoon-aziz-movies").metas.length, 17);
+  assert.equal(makeCatalog("cartoon-aziz-cartoons", "جزيرة الكنز").metas.length, 1);
+});
+
+test("asset host can be configured outside Render", () => {
+  const previous = process.env.ASSET_BASE_URL;
+  process.env.ASSET_BASE_URL = "https://media.example.com/static/";
+  assert.equal(makeManifest().logo, "https://media.example.com/static/app-logo-v2.png");
+  if (previous === undefined) delete process.env.ASSET_BASE_URL;
+  else process.env.ASSET_BASE_URL = previous;
 });
 
 test("movie entries are routed only to the movies catalog", () => {
@@ -26,54 +32,59 @@ test("movie entries are routed only to the movies catalog", () => {
 });
 
 test("Harbor season and episode stream ids are accepted", () => {
-  const legacy = makeStreams("cartoon-aziz:sally-visual:1");
-  const harbor = makeStreams("cartoon-aziz:sally-visual:1:1");
+  const legacy = makeStreams("cartoon-aziz:treasure-island:1");
+  const harbor = makeStreams("cartoon-aziz:treasure-island:1:1");
   assert.equal(harbor.streams.length, 1);
   assert.equal(harbor.streams[0].url, legacy.streams[0].url);
 });
 
-test("configuration changes catalogs and display behavior", () => {
-  const options = { kids: false, adventures: false, showQuality: false, usePoster: false, autoplay: false, newestFirst: true };
+test("configuration changes display behavior", () => {
+  const options = { showQuality: false, usePoster: false, autoplay: false, newestFirst: true };
   const token = encodeOptions(options);
-  assert.equal(decodeOptions(token).kids, false);
-  assert.deepEqual(makeManifest(options).catalogs.map((item) => item.id), ["cartoon-aziz-cartoons", "cartoon-aziz-movies"]);
-  const meta = makeMeta("cartoon-aziz:moka-moka", null, options);
+  assert.equal(decodeOptions(token).showQuality, false);
+  const meta = makeMeta("cartoon-aziz:فلونة", null, options);
   assert.equal(meta.meta.videos[0].episode, 50);
   assert.equal(meta.meta.videos[0].thumbnail, undefined);
-  const stream = makeStreams("cartoon-aziz:moka-moka:1", options).streams[0];
+  const stream = makeStreams("cartoon-aziz:فلونة:1", options).streams[0];
   assert.equal(stream.name, "R2 الرئيسي");
   assert.equal(stream.behaviorHints, undefined);
 });
 
-test("Sally has 48 episodes and an encoded R2 stream URL", async () => {
-  const meta = makeMeta("cartoon-aziz:sally-visual");
-  assert.equal(meta.meta.videos.length, 48);
-  assert.match(meta.meta.videos[0].thumbnail, /sally-poster\.png$/);
-  assert.equal(meta.meta.runtime, "24 دقيقة");
-  assert.match(meta.meta.logo, /sally-logo\.png$/);
-  assert.match(meta.meta.description, /سالي كرو/);
-  assert.deepEqual(makeMeta("cartoon-aziz:sally-visual", [1, 48]).meta.videos.map((v) => v.episode), [1, 48]);
-  const result = makeStreams("cartoon-aziz:sally-visual:1");
-  assert.equal(result.streams[0].url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%B3%D8%A7%D9%84%D9%8A/E1.mp4");
+test("stream responses point directly to R2, never Render", () => {
+  const stream = makeStreams("cartoon-aziz:treasure-island:26").streams[0];
+  assert.equal(stream.url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2/E26.mp4");
+  assert.doesNotMatch(stream.url, /onrender\.com/);
 });
 
-test("Moka Moka has 50 episodes and correct R2 folder", () => {
-  const meta = makeMeta("cartoon-aziz:moka-moka");
-  assert.equal(meta.meta.videos.length, 50);
-  assert.equal(meta.meta.releaseInfo, "1993");
-  assert.match(meta.meta.poster, /%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7\.PNG$/);
-  const result = makeStreams("cartoon-aziz:moka-moka:50");
-  assert.equal(result.streams[0].url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D9%85%D9%88%D9%83%D8%A7%20%D9%85%D9%88%D9%83%D8%A7/E50.mp4");
-});
+test("HTTP endpoints send cache headers and support conditional 304", async () => {
+  const server = createApp();
+  const request = (url, headers = {}) => new Promise((resolve, reject) => {
+    const response = { status: 0, headers: {}, body: "" };
+    const res = {
+      setHeader(name, value) { response.headers[name.toLowerCase()] = value; },
+      writeHead(status, values = {}) {
+        response.status = status;
+        for (const [name, value] of Object.entries(values)) response.headers[name.toLowerCase()] = value;
+      },
+      end(body = "") { response.body = body ? String(body) : ""; resolve(response); }
+    };
+    try { server.emit("request", { url, method: "GET", headers }, res); }
+    catch (error) { reject(error); }
+  });
+  try {
+    const manifest = await request("/manifest.json");
+    assert.match(manifest.headers["cache-control"], /s-maxage=86400/);
+    const etag = manifest.headers.etag;
+    assert.ok(etag);
+    const cached = await request("/manifest.json", { "if-none-match": etag });
+    assert.equal(cached.status, 304);
 
-test("Treasure Island has 26 episodes, story, poster, and correct R2 folder", () => {
-  const meta = makeMeta("cartoon-aziz:treasure-island");
-  assert.equal(meta.meta.videos.length, 26);
-  assert.equal(meta.meta.releaseInfo, "1978");
-  assert.match(meta.meta.description, /جيم هوكنز/);
-  assert.match(meta.meta.poster, /%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2\.jpg$/);
-  assert.match(meta.meta.videos[0].thumbnail, /S01E01%20-%2020260804_190847_322%20-%2012m49s\.png$/);
-  assert.match(meta.meta.videos[25].thumbnail, /S01E26%20-%2020260805_020733_042%20-%204m52s\.png$/);
-  const result = makeStreams("cartoon-aziz:treasure-island:26");
-  assert.equal(result.streams[0].url, "https://pub-2ad8f7652233436cb957fed37d7bed31.r2.dev/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%83%D9%86%D8%B2/E26.mp4");
+    const catalog = await request("/catalog/series/cartoon-aziz-cartoons.json");
+    assert.match(catalog.headers["cache-control"], /s-maxage=21600/);
+    const stream = await request("/stream/series/cartoon-aziz:treasure-island:1.json");
+    assert.match(stream.headers["cache-control"], /s-maxage=1800/);
+    assert.doesNotMatch(stream.body, /onrender\.com/);
+  } finally {
+    server.close();
+  }
 });

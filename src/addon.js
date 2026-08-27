@@ -1,14 +1,33 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const http = require("node:http");
+const { createHash } = require("node:crypto");
 
 const dataPath = process.env.CARTOONS_FILE || path.join(__dirname, "..", "cartoons.json");
-const publicPath = path.join(__dirname, "..", "public");
 const checkCache = new Map();
-const CHECK_TTL = 10 * 60 * 1000;
+const CHECK_TTL = Number(process.env.STREAM_CHECK_TTL_MS) || 6 * 60 * 60 * 1000;
+
+const CACHE_CONTROL = {
+  manifest: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+  catalog: "public, max-age=1800, s-maxage=21600, stale-while-revalidate=86400",
+  meta: "public, max-age=1800, s-maxage=21600, stale-while-revalidate=86400",
+  stream: "public, max-age=300, s-maxage=1800, stale-while-revalidate=3600",
+  page: "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
+  health: "no-store"
+};
 
 function loadData() {
   return JSON.parse(fs.readFileSync(dataPath, "utf8"));
+}
+
+function assetBaseUrl() {
+  const configured = process.env.ASSET_BASE_URL || process.env.R2_ASSET_BASE_URL;
+  if (configured) return configured.replace(/\/$/, "");
+  return `${loadData().baseUrl.replace(/\/$/, "")}/assets`;
+}
+
+function assetUrl(filename) {
+  return `${assetBaseUrl()}/${encodeURIComponent(filename)}`;
 }
 
 function addonId(cartoonId) { return `cartoon-aziz:${cartoonId}`; }
@@ -43,8 +62,8 @@ function makeManifest(userOptions = {}) {
     id: "com.aziz.cartoon.v4",
     version: "3.8.4",
     name: "Cartoon Aziz",
-    logo: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
-    background: "https://cartoon-aziz-addon.onrender.com/assets/app-logo-v2.png",
+    logo: assetUrl("app-logo-v2.png"),
+    background: assetUrl("app-logo-v2.png"),
     description: "عالم الكرتون العربي الكلاسيكي بجودة عالية — مكتبة عزيز الخاصة",
     resources: ["catalog", "meta", "stream"],
     types: ["series"],
@@ -155,7 +174,9 @@ function makeStreams(id, userOptions = {}) {
 }
 
 async function availableEpisodes(cartoon) {
-  if (process.env.CHECK_STREAMS === "false") return null;
+  // Network probing is deliberately opt-in. R2 URLs are returned directly and
+  // Stremio performs the actual media request without proxying through Render.
+  if (process.env.CHECK_STREAMS !== "true") return null;
   const cached = checkCache.get(cartoon.id);
   if (cached && Date.now() - cached.time < CHECK_TTL) return cached.episodes;
   const { baseUrl } = loadData();
@@ -183,7 +204,7 @@ function welcomePage() {
   *{box-sizing:border-box}
   body{margin:0;background:#05070c;color:#f4f6f9;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden}
   body:before{content:"";position:fixed;inset:0;background:radial-gradient(900px 500px at 85% -10%,#3a2a5c55,transparent),radial-gradient(700px 500px at -10% 30%,#efb74c22,transparent),#05070c;z-index:-2}
-  body:after{content:"";position:fixed;top:-15%;right:-15%;width:65%;height:65%;background:url('/assets/app-logo-v2.png') center/contain no-repeat;opacity:.14;filter:blur(70px) saturate(1.3);z-index:-1;pointer-events:none}
+  body:after{content:"";position:fixed;top:-15%;right:-15%;width:65%;height:65%;background:url('${assetUrl("app-logo-v2.png")}') center/contain no-repeat;opacity:.14;filter:blur(70px) saturate(1.3);z-index:-1;pointer-events:none}
   .wrap{max-width:1080px;margin:auto;padding:60px 24px 80px}
   .hero{display:flex;gap:36px;align-items:center;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:28px;padding:36px;backdrop-filter:blur(18px);box-shadow:0 30px 80px -30px #000}
   .logo-wrap{position:relative;width:180px;height:180px;flex-shrink:0;border-radius:34px;overflow:hidden;box-shadow:0 24px 60px -14px #000,0 0 0 1px #ffffff26 inset,0 0 50px -6px #efb74c55}
@@ -208,7 +229,7 @@ function welcomePage() {
   @media(max-width:650px){.hero{flex-direction:column;text-align:center;padding:28px}.hero p{text-align:center}.buttons{justify-content:center}.logo-wrap{width:140px;height:140px}.stats,.cards{grid-template-columns:1fr}}
   </style></head><body><main class="wrap">
   <section class="hero">
-    <div class="logo-wrap"><img class="bg" src="/assets/app-logo-v2.png"><img class="fg" src="/assets/app-logo-v2.png"></div>
+    <div class="logo-wrap"><img class="bg" src="${assetUrl("app-logo-v2.png")}"><img class="fg" src="${assetUrl("app-logo-v2.png")}"></div>
     <div>
       <div class="tag">مكتبة عزيز الخاصة</div>
       <h1>Cartoon Aziz</h1>
@@ -233,7 +254,7 @@ function configurePage() {
   *{box-sizing:border-box}
   body{margin:0;background:#05070c;color:#f4f6f9;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;min-height:100vh}
   body:before{content:"";position:fixed;inset:0;background:radial-gradient(900px 500px at 90% -10%,#3a2a5c4d,transparent),radial-gradient(700px 500px at -10% 40%,#efb74c1c,transparent),#05070c;z-index:-2}
-  body:after{content:"";position:fixed;top:-15%;right:-15%;width:55%;height:55%;background:url('/assets/app-logo-v2.png') center/contain no-repeat;opacity:.12;filter:blur(60px) saturate(1.3);z-index:-1;pointer-events:none}
+  body:after{content:"";position:fixed;top:-15%;right:-15%;width:55%;height:55%;background:url('${assetUrl("app-logo-v2.png")}') center/contain no-repeat;opacity:.12;filter:blur(60px) saturate(1.3);z-index:-1;pointer-events:none}
   .wrap{max-width:960px;margin:auto;padding:44px 20px 70px}
   .head{display:flex;align-items:center;gap:22px;margin-bottom:30px;background:linear-gradient(160deg,#ffffff0f,#ffffff03);border:1px solid #ffffff17;border-radius:24px;padding:24px;backdrop-filter:blur(18px)}
   .logo-wrap{position:relative;width:96px;height:96px;flex-shrink:0;border-radius:24px;overflow:hidden;box-shadow:0 16px 40px -10px #000,0 0 0 1px #ffffff26 inset,0 0 34px -4px #efb74c55}
@@ -266,7 +287,7 @@ function configurePage() {
   @media(max-width:700px){.grid,.stats{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.head{flex-direction:column;text-align:center}}
   </style></head><body><main class="wrap">
   <div class="head">
-    <div class="logo-wrap"><img class="bg" src="/assets/app-logo-v2.png"><img class="fg" src="/assets/app-logo-v2.png"></div>
+    <div class="logo-wrap"><img class="bg" src="${assetUrl("app-logo-v2.png")}"><img class="fg" src="${assetUrl("app-logo-v2.png")}"></div>
     <div><h1>إعداد Cartoon Aziz</h1><p>خصص مكتبتك ثم ثبّت الرابط الناتج في Harbor.</p></div>
   </div>
   <section class="stats"><div class="stat"><b id="r2">…</b><span>حالة R2</span></div><div class="stat"><b>${cartoons.length}</b><span>المسلسلات</span></div><div class="stat"><b>${total}</b><span>الحلقات</span></div><div class="stat"><b>3.8.4</b><span>الإصدار</span></div></section>
@@ -287,7 +308,7 @@ function configurePage() {
   document.getElementById('reset').onclick=()=>{localStorage.removeItem('cartoonAzizOptions');ids.forEach(id=>document.getElementById(id).checked=defaults[id]);document.getElementById('quality').value=defaults.quality;update()};
   document.getElementById('install').onclick=()=>{location.href=document.getElementById('url').value.replace('https://','stremio://')};
   try{const saved=JSON.parse(localStorage.getItem('cartoonAzizOptions'));if(saved){ids.forEach(id=>document.getElementById(id).checked=saved[id]??defaults[id]);document.getElementById('quality').value=saved.quality||'auto'}}catch{}update();
-  fetch('/health.json').then(r=>r.json()).then(x=>{const el=document.getElementById('r2');el.textContent=x.r2?'متصل':'غير متصل';el.className=x.r2?'status':''}).catch(()=>document.getElementById('r2').textContent='غير متصل');
+  fetch('/health.json').then(r=>r.json()).then(x=>{const el=document.getElementById('r2');el.textContent=x.r2?'مهيأ':'غير مهيأ';el.className=x.r2?'status':''}).catch(()=>document.getElementById('r2').textContent='غير مهيأ');
   </script></body></html>`;
 }
 
@@ -299,35 +320,42 @@ function createApp() {
     const configured = /^\/c\/([^/]+)(\/.*)$/.exec(pathname);
     const options = configured ? decodeOptions(configured[1]) : normalizeOptions();
     const routePath = configured ? configured[2] : pathname;
-    const json = (body, status = 200) => { res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" }); res.end(JSON.stringify(body)); };
-    const html = (body) => { res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" }); res.end(body); };
+    const send = (payload, contentType, status, cacheControl) => {
+      const etag = `"${createHash("sha256").update(payload).digest("base64url").slice(0, 22)}"`;
+      if (req.headers["if-none-match"] === etag) {
+        res.writeHead(304, { "Cache-Control": cacheControl, ETag: etag });
+        return res.end();
+      }
+      res.writeHead(status, { "Content-Type": contentType, "Cache-Control": cacheControl, ETag: etag, "Content-Length": Buffer.byteLength(payload) });
+      res.end(req.method === "HEAD" ? undefined : payload);
+    };
+    const json = (body, status = 200, cacheControl = "no-store") => {
+      const payload = JSON.stringify(body);
+      return send(payload, "application/json; charset=utf-8", status, cacheControl);
+    };
+    const html = (body) => send(body, "text/html; charset=utf-8", 200, CACHE_CONTROL.page);
 
     if (routePath === "/") return html(welcomePage());
     if (routePath === "/configure") return html(configurePage());
-    if (routePath === "/manifest.json") return json(makeManifest(options));
+    if (routePath === "/manifest.json") return json(makeManifest(options), 200, CACHE_CONTROL.manifest);
     if (routePath === "/health.json") {
       const { baseUrl, cartoons } = loadData();
-      let r2 = false;
-      try { const response = await fetch(streamUrl(baseUrl, cartoons[0], 1), { method: "HEAD", signal: AbortSignal.timeout(5000) }); r2 = response.status !== 404; } catch {}
-      return json({ status: "ok", r2, series: cartoons.length, episodes: cartoons.reduce((sum, c) => sum + c.episodes, 0) });
-    }
-    if (routePath.startsWith("/assets/")) {
-      const filename = path.basename(routePath);
-      const assetPath = path.join(publicPath, filename);
-      if (fs.existsSync(assetPath)) { res.writeHead(200, { "Content-Type": "image/png", "Cache-Control": "public, max-age=86400" }); return fs.createReadStream(assetPath).pipe(res); }
+      // Configuration-only health check: never downloads or probes an R2 object.
+      const r2 = /^https:\/\//i.test(baseUrl);
+      return json({ status: "ok", r2, series: cartoons.length, episodes: cartoons.reduce((sum, c) => sum + c.episodes, 0) }, 200, CACHE_CONTROL.health);
     }
 
     const catalogMatch = /^\/catalog\/series\/(cartoon-aziz-(?:cartoons|movies))(?:\/search=(.*))?\.json$/.exec(routePath);
-    if (catalogMatch) return json(makeCatalog(catalogMatch[1], catalogMatch[2] || ""));
+    if (catalogMatch) return json(makeCatalog(catalogMatch[1], catalogMatch[2] || ""), 200, CACHE_CONTROL.catalog);
 
     const metaMatch = /^\/meta\/series\/(.+)\.json$/.exec(routePath);
     if (metaMatch) {
       const { cartoons } = loadData();
       const cartoon = cartoons.find((item) => addonId(item.id) === metaMatch[1]);
-      return json(makeMeta(metaMatch[1], cartoon && options.hideMissing ? await availableEpisodes(cartoon) : null, options));
+      return json(makeMeta(metaMatch[1], cartoon && options.hideMissing ? await availableEpisodes(cartoon) : null, options), 200, CACHE_CONTROL.meta);
     }
     const streamMatch = /^\/stream\/series\/(.+)\.json$/.exec(routePath);
-    if (streamMatch) return json(makeStreams(streamMatch[1], options));
+    if (streamMatch) return json(makeStreams(streamMatch[1], options), 200, CACHE_CONTROL.stream);
     return json({ error: "Not found" }, 404);
   });
 }
